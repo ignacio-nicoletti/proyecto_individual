@@ -15,15 +15,15 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement:true,
+      //autoIncrement:true,
      
     },
-    idApi:{
+    // idApi:{--------------------------modo xbase
 
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
 
-    },
+    // },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,

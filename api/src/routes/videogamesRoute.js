@@ -4,40 +4,51 @@ const router = Router();
 const { Videogame, Genre } = require("../db.js");
 const { Op } = require("sequelize")
 
+const axios = require("axios");
+const { ApiGame, GameTotal, TotalDetail, ApiDetail, LLamarJuegos } = require("../Controllers/videogameControl.js");
+
+
 
 
 router.get("/", async (req, res) => {
    const { name } = req.query;
+
    try {
-      let juegos15 = await Videogame.findAll()//me trae todos 
+
+      const juegos = await GameTotal();
 
       if (name) {
-         juegos15 = await Videogame.findAll({
-            where: {
-               name: {
-                  [Op.iLike]: `${name}%`
-               }
-            },
-         });
-         if (!juegos15.length) {
-            throw new Error("No exite juego con ese nombre")
+         const Jfiltrado = juegos.filter((juego) =>
+            juego.name.toLowerCase().includes(name.toLowerCase()))
+
+         if (Jfiltrado.length) {
+            res.status(200).send(Jfiltrado)
          }
+         else { res.status(400).send("no existe ese juego") }
+         res.status(200).send(Jfiltrado)
       }
-      res.status(200).send(juegos15);
+      res.status(200).send(juegos)
    } catch (error) {
-      res.status(400).send(error.message)
+      res.status(400).send(error)
    }
-});
+})
 
 
+router.post("/", async (req, res) => {
 
-router.post("/create", async (req, res) => {
-
-   const {  name, description, released, rating, platforms, imageUrl, genres ,createdInDb} = req.body;
+   const { name, description, released, rating, platforms, imageUrl, genres, createdInDb } = req.body;
 
    try {
- 
+      let id = 1;
+      const idApi = await LLamarJuegos()
+      const  resultado = idApi.map((juego)=>juego.id)
+
+      while (resultado.includes(id)) {
+         id++
+      }
+
       const crearVideojuego = await Videogame.create({
+         id,
          name: name,
          description: description,
          released: released,
@@ -49,7 +60,7 @@ router.post("/create", async (req, res) => {
 
       if (genres) {
 
-         genres.map( async(genero) => {
+         genres.map(async (genero) => {
             const generoDb = await Genre.findOne({
                where: {
                   name: genero
@@ -61,13 +72,49 @@ router.post("/create", async (req, res) => {
             crearVideojuego.addGenre(generoDb)
          })
       }
-       res.status(200).send("juego creado con exito");
+      res.status(200).send("juego creado con exito");
 
    } catch (error) {
-     res.status(404).send(error);
+      res.status(404).send(error.message);
    }
 
-})
+});
 
+//
+//
+//
+//
+//
+//-----------Modo Pasar Api por la base de datos-------------- 
+//
+//
+//
+//
+//
+
+
+
+// router.get("/", async (req, res) => {
+//    const { name } = req.query;
+//    try {
+//       let juegos15 = await Videogame.findAll()//me trae todos 
+
+//       if (name) {
+//          juegos15 = await Videogame.findAll({
+//             where: {
+//                name: {
+//                   [Op.iLike]: `${name}%`
+//                }
+//             },
+//          });
+//          if (!juegos15.length) {
+//             throw new Error("No exite juego con ese nombre")
+//          }
+//       }
+//       res.status(200).send(juegos15);
+//    } catch (error) {
+//       res.status(400).send(error.message)
+//    }
+// });
 
 module.exports = router;

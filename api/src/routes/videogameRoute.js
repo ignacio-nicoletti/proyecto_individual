@@ -1,7 +1,10 @@
 const { Router } = require("express");
-const { Videogame, Genre } = require("../db")
+const { Videogame, Genre } = require("../db")//genre se usa en Xbase
 const router = Router()
-const { Op } = require('sequelize');
+//const { Op } = require('sequelize');-->modo xbase
+const { ApiDetail, DbDetail } = require("../Controllers/videogameControl");
+
+
 
 
 
@@ -9,12 +12,14 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
 
     try {
-        const GameId = await Videogame.findOne({
-            where: { id: { [Op.eq]: id } }
+        const detailapi = await ApiDetail(id);
+        const detailBD = await DbDetail(id);
 
-            // atributes: {model:Genre}}
-        });
-        res.status(200).send(GameId);
+
+        const match = detailapi.find((el) => el.id === parseInt(id))
+        const match2 = detailBD.find((el) => el.id === parseInt(id))
+        res.status(200).send([match,match2]);
+
     } catch (error) {
         res.status(500).send(error.message)
     }
@@ -33,7 +38,6 @@ router.delete("/:id", async (req, res) => {
         res.status(400).send(error.message)
     }
 });
-
 
 
 router.put("/:id", async (req, res) => {
@@ -56,6 +60,35 @@ router.put("/:id", async (req, res) => {
         res.status(400).send(error.message)
     }
 });
+
+
+//
+//
+//
+//
+//
+//-----------Modo Pasar Api por la base de datos-------------- 
+//
+//
+//
+//
+//
+
+// router.get("/:id", async (req, res) => {
+//     const { id } = req.params;    
+
+//     try {
+//         const GameId = await Videogame.findOne({
+//             where: { id: { [Op.eq]: id } }    
+
+//             // atributes: {model:Genre}}
+//         });
+//         res.status(200).send(GameId);
+//     } catch (error) {
+//         res.status(500).send(error.message)    
+//     }
+// });
+
 
 
 

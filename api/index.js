@@ -19,18 +19,18 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { ApiGenero } = require('./src/Controllers/genereControl.js');
-const { ApiGame} = require('./src/Controllers/videogameControl.js');
+const { ApiGame } = require('./src/Controllers/videogameControl.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, async() => {
+  server.listen(3001, async () => {
     console.log('%s listening at 3001')
-    await ApiGame();
-   console.log("se levanto la base de videogames")
+    //   await ApiGame();
+    //  console.log("se levanto la base de videogames")
     await ApiGenero()
     console.log("se levanto la base de generos");
-    
-     // eslint-disable-line no-console
+
+    // eslint-disable-line no-console
   });
 });
