@@ -1,29 +1,36 @@
 import './App.css';
 import Form from './Component/Form/Form';
-import Home from './Component/Home/Home.js';
+import Home from './Component/Home/Home';
 import NavBar from './Component/NavBar/NavBar';
-import Prueba from './Component/Prueba';
-import { Route } from 'react-router-dom';
-
+import LandingPage from './Component/LandingPage/LandingPage'
+import { Route, Switch } from 'react-router-dom';
 
 
 
 function App() {
   return (
-     <div className="App">
-         <NavBar/>
-<Prueba/>
-    //   <Route path="/home">
-    //     <Home />
-    //   </Route>
+   
+   < div className='app'>
+ 
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
 
+        <Route path="/home">
+          <NavBar/>
+          <Home />
+        </Route>
+        
+        <Route path="/create">
+          <Form />
+        </Route>
 
-    //   <Route path="/post">
-    //     <Form />
-    //   </Route>
+        <Route path="/:id">
+          <videoGames />
+        </Route>
 
-
-    </div>
+        </div>
+    
   );
 }
 
