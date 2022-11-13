@@ -1,11 +1,11 @@
 import React from 'react';
 
-const videogames=()=>{
+const videogames=({videogame})=>{
 
 return(
 
 <div>
-   <h1>videogames</h1> 
+  <h3>{videogame.name}</h3>
 </div>
 
 )

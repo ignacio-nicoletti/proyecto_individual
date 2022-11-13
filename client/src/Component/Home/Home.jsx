@@ -27,16 +27,42 @@
 // export default Home;
 
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_videogames } from '../../Redux/Actions/action';
+import Videogames from "../Videogames/Videogames"
 
 const Home = () => {
 
-    return (
+    const dispatch = useDispatch()
 
-        <div>
-            <h1>Home</h1>
-        </div>
+    const videogames = useSelector(state => state.videogames)
 
-    )
+    useEffect(() => {
+        dispatch(get_videogames())
+    }, [])
+
+
+    if (videogames.length) {
+
+        return (
+
+            <>
+                {videogames.map(videogame => <Videogames key={videogame.id} videogame={videogame} />)}
+
+            </>
+
+        )
+
+    }
+    else {
+        return (
+            <>
+                <h1>loading...</h1>
+            </>
+
+        )
+    }
 }
 
 export default Home;
