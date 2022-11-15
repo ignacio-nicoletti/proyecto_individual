@@ -27,42 +27,16 @@
 // export default Home;
 
 import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { get_videogames } from '../../Redux/Actions/action';
-import Videogames from "../Videogames/Videogames"
+import SearchBar from '../SearchBar/SearchBar'
+import Videogames from '../Videogames/Videogames';
+import style from './Home.module.css';
 
 const Home = () => {
-
-    const dispatch = useDispatch()
-
-    const videogames = useSelector(state => state.videogames)
-
-    useEffect(() => {
-        dispatch(get_videogames())
-    }, [])
-
-
-    if (videogames.length) {
-
-        return (
-
-            <>
-                {videogames.map(videogame => <Videogames key={videogame.id} videogame={videogame} />)}
-
-            </>
-
-        )
-
-    }
-    else {
-        return (
-            <>
-                <h1>loading...</h1>
-            </>
-
-        )
-    }
+    return (
+        <div className={style.contain}>
+            <SearchBar />
+            <Videogames />
+        </div>)
 }
 
 export default Home;

@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
-const API_KEY = "5423f91210b541c7b628ea556649c0bb";
+const API_KEY = "568e056812744f16ad009be325069566";
 
 const LLamarJuegos = async () => {
 	let juegos = [];
@@ -13,12 +13,14 @@ const LLamarJuegos = async () => {
 				name: game.name,
 				releaseDate: game.released,
 				rating: game.rating,
-				platforms: game.platforms.map((game) => game.platform.name),
+				platforms: toString(game.platforms.map((game) => game.platform.name)),
 				imageUrl: game.background_image,
-				genres: game.genres.map((genre) => genre.name),
+				genres: toString(game.genres.map((genre) => genre.name)),
 			});
 		})
+
 	}
+
 	return juegos;
 }
 
@@ -62,6 +64,16 @@ const GameTotal = async () => {
 
 
 
+const toString = (array) => {
+	let st = "";
+	array.map((e) => {
+	  st.length === 0 ? (st += e) : (st += ", " + e);
+	});
+	return st;
+  }; //funcion que agrega comas entre elementos
+  
+
+
 
 
 const ApiDetail = async (id) => {
@@ -77,8 +89,8 @@ const ApiDetail = async (id) => {
 		imageUrl: apiDetail.background_image,
 		releaseDate: apiDetail.released,
 		rating: apiDetail.rating,
-		platforms: apiDetail.platforms.map((p) => p.platform.name),
-		genres: apiDetail.genres.map((g) => g.name),
+		platforms: toString(apiDetail.platforms.map((p) => p.platform.name)),
+		genres: toString(apiDetail.genres.map((g) => g.name)),
 	}
 
 	return [gamebyId];
@@ -111,7 +123,7 @@ const TotalDetail = async () => {
 			rating: el.rating,
 			platforms: el.platforms,
 			imageUrl: el.imageUrl,
-			genres: el.genres.map((genre) => genre.name),
+			genres: toString(el.genres.map((genre) => genre.name)),
 			createdInDb: true,
 		};
 	});

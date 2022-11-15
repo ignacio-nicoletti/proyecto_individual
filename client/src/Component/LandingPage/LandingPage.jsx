@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../LandingPage/Landing.module.css'
-import fondo from '../../assets/Fondo.jpg'
+import fondo from '../../assets/landing.png'
 import git from '../../assets/github.png'
 
 import linked from '../../assets/linked.png'
@@ -21,11 +21,11 @@ const LandingPage = () => {
 
             <div >
                 <a href="https://github.com/ignacio-nicoletti"  target="_blank">
-                    <img src={git} alt="github-photo" className={styles.button_git}  />
+                    <img src={git} alt="github-icon" className={styles.button_git}  />
                 </a>
                 <a href="https://www.linkedin.com/in/ignacio-nicoletti"  target="_blank">
 
-                    <img src={linked} alt="github-photo" className={styles.button_linked} />
+                    <img src={linked} alt="github-icon" className={styles.button_linked} />
                 </a>
 
             </div>

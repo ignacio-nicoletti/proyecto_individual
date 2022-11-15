@@ -22,10 +22,10 @@ router.get("/", async (req, res) => {
             juego.name.toLowerCase().includes(name.toLowerCase()))
 
          if (Jfiltrado.length) {
-            res.status(200).send(Jfiltrado)
+           return res.status(200).send(Jfiltrado)
          }
-         else { res.status(400).send("no existe ese juego") }
-         res.status(200).send(Jfiltrado)
+         else { return res.status(400).send("no existe ese juego") }
+        
       }
       res.status(200).send(juegos)
    } catch (error) {

@@ -1,0 +1,10 @@
+.contain {
+    padding: 0 50px 0 50px;
+
+    background-color: #48cae4;
+}
+.containT{
+    display: flex;
+    justify-content: center;
+
+}

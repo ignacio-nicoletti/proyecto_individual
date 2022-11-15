@@ -1,14 +1,19 @@
-import React from 'react';
-
+import { Link } from 'react-router-dom';
+import style from './NavBar.module.css';
 const NavBar = () => {
-
    return (
 
-      <div>
-         <h1>Navbar</h1>
+      <div className={style.containT}>
+
+         <Link to="/" className={style.contain}>Home</Link>
+
+         <Link to="/create" className={style.contain}>create</Link>
+
+         <Link to="/about" className={style.contain}>About</Link>
+
       </div>
 
    )
-}
 
+}
 export default NavBar;
