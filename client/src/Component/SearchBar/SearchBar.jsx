@@ -6,27 +6,19 @@ import style from './searchBar.module.css'
 const SearchBar = () => {
 
     const disptach = useDispatch()
-
-
     const [search, setSearch] = useState("")
 
 
     const handleInput = (e) => {
 
         setSearch(e.target.value)
-
     }
-
-
 
     const handleSubmit = () => {
         if (search) {
             disptach(filtrarXVideogame(search))
         }
-
     }
-
-
 
     return (
         <div className={style.contain}>
