@@ -15,8 +15,6 @@ const BotonGrVg = () => {
 
 
 
-
-
     return (
         <div className={style.contain}>
             <label>Choose a categories:</label>

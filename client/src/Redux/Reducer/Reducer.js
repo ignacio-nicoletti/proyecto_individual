@@ -1,13 +1,14 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
     videoxpag: [],
     Genres: [],
     error: {},
-    estado: "Videojuego"
-}
+    estado: "Videojuego",
+    order: "A-Z",
 
+}
 
 
 
@@ -28,7 +29,39 @@ export default function reducer(state = initial_state, action) {
         case SETEARESTADO:
             return { ...state, estado: action.payload }
 
+
+
+
+        case ORDER:
+            const games =
+                action.payload==="A-Z"
+                    ? state.videoxpag.sort((a, b) => {
+                        if (a.name > b.name) {
+                            return 1;
+                        }
+                        if (b.name > a.name) {
+                            return -1;
+                        }
+                        return 0;
+                    })
+                    : state.videoxpag.sort((b, a) => {
+                        if (a.name > b.name) {
+                            return 1;
+                        }
+                        if (b.name > a.name) {
+                            return -1;
+                        }
+                        return 0;
+                    });
+            return {
+                ...state,
+                videoxpag: games,
+            };
+
+
         case ERROR: return { ...state, error: action.payload }
+
+
 
 
 

@@ -7,7 +7,7 @@ export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
 export const FILTRARXNOMBRE = "FILTRAXNOMBRE";
 export const FILTRARXGENERO = "FILTRARXGENERO";
 export const SETEARESTADO = "SETEARESTADO"
-
+export const ORDER = "ORDER";
 
 
 
@@ -96,7 +96,7 @@ export const filtrarXGenero = () => {
 }
 
 export const setearEstado = (estado) => {
-   return {
+    return {
         type: SETEARESTADO,
         payload: estado
     }
@@ -106,6 +106,15 @@ export const setearEstado = (estado) => {
 
 }
 
+export const setearOrder=(value)=>{
+    return{
+        type:ORDER,
+        payload:value,
+    };
+
+
+
+}
 
 export const post_videogames = (videogame) => {
 

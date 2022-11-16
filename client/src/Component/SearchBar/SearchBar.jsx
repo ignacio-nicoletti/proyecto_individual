@@ -21,11 +21,11 @@ const SearchBar = () => {
     }
 
 
-const ambasF=()=>{
-    disptach(get_videogames());
-    setSearch("")
+    const ambasF = () => {
+        disptach(get_videogames());
+        setSearch("")
 
-}
+    }
 
     return (
         <div className={style.contain}>
@@ -38,7 +38,7 @@ const ambasF=()=>{
 
             {
                 search ?
-                    <button onClick={()=>ambasF()} className={style.button}>X</button> : ""
+                    <button onClick={() => ambasF()} className={style.button}>X</button> : ""
 
             }
         </div>

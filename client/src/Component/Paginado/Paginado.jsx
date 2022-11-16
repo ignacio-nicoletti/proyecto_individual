@@ -9,7 +9,7 @@ export default function Paginado({ setCurrentPage, videoxpag, postPerPage }) {
     pageNumbers.push(i + 1);
   }
   return (
-    <div className={style.contain}>
+    <div className={style.contain} key={setCurrentPage}>
       {pageNumbers &&
         pageNumbers.map((number) => (
           

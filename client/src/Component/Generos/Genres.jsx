@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector, } from "react-redux";
-import { filtrarXGenero, filtrarXVideogame } from '../../Redux/Actions/action'
+import { filtrarXGenero } from '../../Redux/Actions/action'
 import style from './Genres.module.css'
 
 const Genres = () => {

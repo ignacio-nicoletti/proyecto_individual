@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
 import carga from "../../assets/carga.gif"
@@ -9,7 +9,7 @@ const Videogames = ({ currentPost }) => {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(get_videogames())
+      dispatch(get_videogames());
    }, [dispatch])
 
 
