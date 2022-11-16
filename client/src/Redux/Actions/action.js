@@ -8,7 +8,7 @@ export const FILTRARXNOMBRE = "FILTRAXNOMBRE";
 export const FILTRARXGENERO = "FILTRARXGENERO";
 export const SETEARESTADO = "SETEARESTADO"
 export const ORDER = "ORDER";
-
+export const RATING="RATING";
 
 
 
@@ -111,8 +111,14 @@ export const setearOrder=(value)=>{
         type:ORDER,
         payload:value,
     };
+}
 
+export const setearRating=(value)=>{
 
+    return{
+        type:RATING,
+        payload:value,
+    };
 
 }
 

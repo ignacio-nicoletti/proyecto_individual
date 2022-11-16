@@ -18,14 +18,14 @@ const Videogames = ({ currentPost }) => {
       <>
          {
             currentPost.length > 0
-               ? currentPost.map(({ imageUrl, name, genres, }) => (
+               ? currentPost.map(({ imageUrl, name, genres, rating}) => (
                   <div className={style.contain} key={name}>
 
                      <img src={imageUrl} alt="Foto game" className={style.portada} />
 
                      <h3 className={style.dim}>{name}</h3>
                      <h4 className={style.dim}>Genre: {genres}</h4>
-
+                     <h4 className={style.dim}>Rating: {rating}	★</h4>
 
                   </div>
                ))

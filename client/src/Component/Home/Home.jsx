@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setearOrder } from '../../Redux/Actions/action';
+import { useSelector } from 'react-redux';
+
 import BotonGrVg from '../BotonGrVg/BotonGrVg';
 import BotonOrder from '../BotonOrder/BotonOrder';
 import BotonRating from '../BotonRating/BotonRating';
@@ -32,9 +31,10 @@ const Home = () => {
     //---order---//
 
 
+    //---rating---//
+    const [rating, setRating] = useState(false)
+    //---rating---/
 
-
-    
 
     return (
         <>
@@ -42,7 +42,7 @@ const Home = () => {
 
                 <BotonGrVg />
                 <SearchBar />
-                <BotonRating />
+                <BotonRating setRating={setRating} rating={rating} />
                 <BotonOrder setRender={setRender} render={render} />
                 <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
 
