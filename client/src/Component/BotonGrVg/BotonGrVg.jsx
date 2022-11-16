@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+
 import { useDispatch } from "react-redux";
-import { filtrarXVideogame } from '../../Redux/Actions/action'
+import {  setearEstado } from "../../Redux/Actions/action";
+
 import style from './BotonGrVg.module.css'
 
 const BotonGrVg = () => {
 
+    const disptach = useDispatch();
 
+    const handleChange = (e) => {
+    
+        disptach(setearEstado(e.target.value))
+    }
 
 
 
@@ -13,11 +19,11 @@ const BotonGrVg = () => {
 
     return (
         <div className={style.contain}>
-            <label for="dog-names">Choose a categories:</label>
-            <select name="tipo">
+            <label>Choose a categories:</label>
+            <select onChange={handleChange}>
 
-                <option value="Genero">Genero</option>
-                <option value="Videojuego">videojuegos  </option>
+                <option value="Videojuego">Videojuego</option>
+                <option value="Genero" >Genero</option>
 
             </select>
 

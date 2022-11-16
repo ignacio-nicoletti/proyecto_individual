@@ -1,6 +1,6 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { filtrarXVideogame } from '../../Redux/Actions/action'
+import { filtrarXVideogame, get_videogames } from '../../Redux/Actions/action'
 import style from './searchBar.module.css'
 
 const SearchBar = () => {
@@ -20,14 +20,27 @@ const SearchBar = () => {
         }
     }
 
+
+const ambasF=()=>{
+    disptach(get_videogames());
+    setSearch("")
+
+}
+
     return (
         <div className={style.contain}>
 
 
-            <input type="text"className={style.input} value={search} onChange={(e) => handleInput(e)} />
+            <input type="text" className={style.input} value={search} onChange={(e) => handleInput(e)} />
 
             <button className='' onClick={(e) => handleSubmit(e)}> search </button >
 
+
+            {
+                search ?
+                    <button onClick={()=>ambasF()} className={style.button}>X</button> : ""
+
+            }
         </div>
 
     );

@@ -4,15 +4,15 @@ import { get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
 import carga from "../../assets/carga.gif"
 
-const Videogames = ({currentPost}) => {
-   
+const Videogames = ({ currentPost }) => {
+
    const dispatch = useDispatch()
-   
+
    useEffect(() => {
       dispatch(get_videogames())
    }, [dispatch])
 
-   
+
    return (
 
       <>
@@ -33,19 +33,7 @@ const Videogames = ({currentPost}) => {
                <>
                   <img src={carga} alt="" />
                </>
-
-
-
          }
-
-         {
-            (currentPost.length < 100 && currentPost.length > 0)
-               ?
-               <button onClick={() => dispatch(get_videogames())}>borrar busqueda</button> : ""
-         }
-
-
-
       </>
 
    )

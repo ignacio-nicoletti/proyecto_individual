@@ -23,3 +23,9 @@
     max-width: 275px;
     color: white;
 }
+
+.button{
+    display: flex;
+    
+   background-color: aqua;
+}

@@ -4,9 +4,9 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const ERROR = "ERROR";
 
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
-export const FILTRARXNOMBRE  = "FILTRAXNOMBRE";
-export const FILTRARXGENERO  = "FILTRARXGENERO";
-
+export const FILTRARXNOMBRE = "FILTRAXNOMBRE";
+export const FILTRARXGENERO = "FILTRARXGENERO";
+export const SETEARESTADO = "SETEARESTADO"
 
 
 
@@ -49,9 +49,9 @@ export const filtrarXVideogame = (name) => {
 
             const response = await axios.get(`http://localhost:3001/videogames?name=${name}`)
             const videogames = response.data
-         
+
             return dispatch({
-                type:FILTRARXNOMBRE,
+                type: FILTRARXNOMBRE,
                 payload: videogames,
 
             })
@@ -69,16 +69,16 @@ export const filtrarXVideogame = (name) => {
 }
 
 
-export const filtrarXGenero=()=>{
+export const filtrarXGenero = () => {
     return async function (dispatch) {
 
         try {
 
-            const response = await axios.get('http://localhost:3001/genres')
+            const response = await axios.get('http://localhost:3001/genre')
             const genres = response.data
-         
+
             dispatch({
-                type:FILTRARXGENERO,
+                type: FILTRARXGENERO,
                 payload: genres,
 
             })
@@ -95,6 +95,16 @@ export const filtrarXGenero=()=>{
 
 }
 
+export const setearEstado = (estado) => {
+   return {
+        type: SETEARESTADO,
+        payload: estado
+    }
+
+
+
+
+}
 
 
 export const post_videogames = (videogame) => {
