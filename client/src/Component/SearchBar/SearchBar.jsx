@@ -30,7 +30,6 @@ const SearchBar = () => {
     return (
         <div className={style.contain}>
 
-
             <input type="text" className={style.input} value={search} onChange={(e) => handleInput(e)} />
 
             <button className='' onClick={(e) => handleSubmit(e)}> search </button >
@@ -38,7 +37,7 @@ const SearchBar = () => {
 
             {
                 search ?
-                    <button onClick={() => ambasF()} className={style.button}>X</button> : ""
+                    <button onClick={ambasF} className={style.button}>X</button> : ""
 
             }
         </div>

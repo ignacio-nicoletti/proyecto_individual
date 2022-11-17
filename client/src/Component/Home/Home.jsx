@@ -13,7 +13,7 @@ import style from './Home.module.css';
 const Home = () => {
 
     //----paginado----//
-    const videoxpag = useSelector(state => state.videogames)
+    const videoxpag = useSelector(state => state.videoxpag)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(15)

@@ -8,7 +8,8 @@ export const FILTRARXNOMBRE = "FILTRAXNOMBRE";
 export const FILTRARXGENERO = "FILTRARXGENERO";
 export const SETEARESTADO = "SETEARESTADO"
 export const ORDER = "ORDER";
-export const RATING="RATING";
+export const RATING = "RATING";
+export const GET_DETAIL = "GET_DETAIL";
 
 
 
@@ -22,7 +23,6 @@ export const get_videogames = () => {
 
             const response = await axios.get('http://localhost:3001/videogames')
             const videogames = response.data
-            console.log(videogames);
             dispatch({
                 type: GET_VIDEOGAMES,
                 payload: videogames
@@ -106,21 +106,47 @@ export const setearEstado = (estado) => {
 
 }
 
-export const setearOrder=(value)=>{
-    return{
-        type:ORDER,
-        payload:value,
+export const setearOrder = (value) => {
+    return {
+        type: ORDER,
+        payload: value,
     };
 }
 
-export const setearRating=(value)=>{
+export const setearRating = (value) => {
 
-    return{
-        type:RATING,
-        payload:value,
+    return {
+        type: RATING,
+        payload: value,
     };
 
 }
+
+export const get_detail = async (id) => {
+    return async function (dispatch) {
+        try {
+
+            const response = await axios.get(`http://localhost:3001/videogame/${id}`)
+            const detail = response.data
+
+            dispatch({
+                type: GET_DETAIL,
+                payload: detail
+
+            })
+
+        } catch (error) {
+            
+            dispatch({
+                type: ERROR,
+                payload: error
+            })
+        }
+
+    }
+}
+
+
 
 export const post_videogames = (videogame) => {
 

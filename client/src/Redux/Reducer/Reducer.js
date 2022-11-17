@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER, RATING } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER, RATING, GET_DETAIL } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
@@ -7,7 +7,8 @@ const initial_state = {
     error: {},
     estado: "Videojuego",
     order: "A-Z",
-    Rating: ""
+    Rating: "",
+    detail:{}
 
 }
 
@@ -82,7 +83,10 @@ export default function reducer(state = initial_state, action) {
                 videoxpag: rating,
             };
 
+        case GET_DETAIL:
+            return{...state, detail: action.payload
 
+            }
 
 
         case ERROR: return { ...state, error: action.payload }
