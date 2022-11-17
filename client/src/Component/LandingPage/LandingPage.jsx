@@ -20,10 +20,10 @@ const LandingPage = () => {
             </div>
 
             <div >
-                <a href="https://github.com/ignacio-nicoletti"  target="_blank" rel="noopener noreferrer">
-                    <img src={git} alt="github-icon" className={styles.button_git}  />
+                <a href="https://github.com/ignacio-nicoletti" target="_blank" rel="noopener noreferrer">
+                    <img src={git} alt="github-icon" className={styles.button_git} />
                 </a>
-                <a href="https://www.linkedin.com/in/ignacio-nicoletti"  target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/ignacio-nicoletti" target="_blank" rel="noopener noreferrer">
 
                     <img src={linked} alt="github-icon" className={styles.button_linked} />
                 </a>

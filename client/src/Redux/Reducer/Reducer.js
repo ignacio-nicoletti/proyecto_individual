@@ -1,14 +1,15 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER, RATING, GET_DETAIL } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
     videoxpag: [],
+    videofiltrados: [],
     Genres: [],
     error: {},
     estado: "Videojuego",
     order: "A-Z",
     Rating: "",
-    detail:{}
+    detail: {}
 
 }
 
@@ -17,24 +18,40 @@ const initial_state = {
 export default function reducer(state = initial_state, action) {
 
     switch (action.type) {
+
         case GET_VIDEOGAMES:
             return { ...state, videogames: action.payload, videoxpag: action.payload }
 
         case FILTRARXNOMBRE:
-            return { ...state, videoxpag: action.payload }
+            return { ...state, videoxpag: action.payload,videofiltrados:action.payload }
 
 
         case FILTRARXGENERO:
             return { ...state, Genres: action.payload }
 
 
+        case FILTRADODEGENERO:
+
+            const Xgeneros =
+                action.payload === "" ?
+                    state.videoxpag : state.videoxpag.filter((e) => e.genres.includes(action.payload))
+            return { ...state, videofiltrados: Xgeneros }
+
+
+
         case SETEARESTADO:
             return { ...state, estado: action.payload }
 
         case ORDER:
+
+            const arrayfilter = state.videofiltrados.length
+                ? state.videofiltrados
+                : state.videoxpag
+
             const games =
-                action.payload === "A-Z"
-                    ? state.videoxpag.sort((a, b) => {
+                action.payload === "A-Z" 
+                    ?
+                    arrayfilter.sort((a, b) => {
                         if (a.name > b.name) {
                             return 1;
                         }
@@ -43,7 +60,7 @@ export default function reducer(state = initial_state, action) {
                         }
                         return 0;
                     })
-                    : state.videoxpag.sort((b, a) => {
+                    : arrayfilter.sort((b, a) => {
                         if (a.name > b.name) {
                             return 1;
                         }
@@ -55,12 +72,23 @@ export default function reducer(state = initial_state, action) {
             return {
                 ...state,
                 videoxpag: games,
+                videofiltrados:games
             };
 
         case RATING:
+            const arrayrating = state.videofiltrados.length
+                ? state.videofiltrados
+                : state.videoxpag
+
+
+
+
+
+
+
             const rating =
                 action.payload === "Menor"
-                    ? state.videoxpag.sort((a, b) => {
+                    ? arrayrating.sort((a, b) => {
                         if (a.rating > b.rating) {
                             return 1;
                         }
@@ -69,7 +97,7 @@ export default function reducer(state = initial_state, action) {
                         }
                         return 0;
                     })
-                    : state.videoxpag.sort((b, a) => {
+                    : arrayrating.sort((b, a) => {
                         if (a.rating > b.rating) {
                             return 1;
                         }
@@ -81,10 +109,12 @@ export default function reducer(state = initial_state, action) {
             return {
                 ...state,
                 videoxpag: rating,
+                videofiltrados:rating
             };
 
         case GET_DETAIL:
-            return{...state, detail: action.payload
+            return {
+                ...state, detail: action.payload
 
             }
 

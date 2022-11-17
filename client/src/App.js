@@ -5,6 +5,7 @@ import NavBar from './Component/NavBar/NavBar';
 import LandingPage from './Component/LandingPage/LandingPage'
 import { Route } from 'react-router-dom';
 import Videogames from './Component/Videogames/Videogames';
+import DetailGame from './Component/DetailGame/DetailGame';
 
 
 
@@ -33,9 +34,11 @@ function App() {
         <Form />
       </Route>
 
-      <Route exact path="/home/:id">
-        <Videogames />
-      </Route>
+      {/* <Route exact path="/home/:id">
+        <DetailGame />
+      </Route> */}
+
+      <Route exact path='/home/:id' component={DetailGame} />
 
     </div>
 

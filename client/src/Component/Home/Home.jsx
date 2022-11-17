@@ -14,6 +14,10 @@ const Home = () => {
 
     //----paginado----//
     const videoxpag = useSelector(state => state.videoxpag)
+    const videofilter = useSelector(state => state.videofiltrados)
+
+console.log("videopag", videoxpag);
+console.log("videofilter", videofilter);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(15)
@@ -21,7 +25,12 @@ const Home = () => {
     const indexOfLastPost = currentPage * postPerPage;//15
     const indexOfFirstPost = indexOfLastPost - postPerPage;//0
 
-    const currentPost = videoxpag.slice(indexOfFirstPost, indexOfLastPost)//de 0-15
+
+    const currentPost = videofilter.length ?
+        videofilter.slice(indexOfFirstPost, indexOfLastPost)
+        : videoxpag.slice(indexOfFirstPost, indexOfLastPost)//de 0-15
+
+
     //----paginado----//
 
     const estado = useSelector(state => state.estado)

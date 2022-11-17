@@ -14,7 +14,7 @@ const Genres = () => {
     const InfGenero = useSelector(state => state.Genres)
 
 
-    console.log(InfGenero);
+ 
 
     return (InfGenero.map(({ name }) =>
 

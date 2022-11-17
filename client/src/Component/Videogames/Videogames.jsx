@@ -1,38 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_detail, get_videogames } from '../../Redux/Actions/action';
+import { filtrarXGenero, get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
 import carga from "../../assets/carga.gif"
-import DetailGame from '../DetailGame/DetailGame';
+
+import { Link } from 'react-router-dom';
 
 const Videogames = ({ currentPost }) => {
 
    const dispatch = useDispatch()
+   // const generos=useSelector(state=>state.videoxpag)
+   // console.log(generos);
 
 
-const id=useSelector(state=>state.Videogames.id)
-console.log(id);
-   
-
-useEffect(() => {
+   useEffect(() => {
       dispatch(get_videogames());
-      dispatch(get_detail(id))
+      dispatch(filtrarXGenero());
    }, [dispatch])
-   
-   
-   
-   const [activo, SetActivo] = useState(false)
-   
-   const handleClick = () => {
-      
-      SetActivo(true)
-    
-
-   }
-
-
-
-
 
 
    return (
@@ -44,11 +28,14 @@ useEffect(() => {
                   <div className={style.contain} key={name}>
 
                      <img src={imageUrl} alt="Foto game" className={style.portada} />
-
                      <h3 className={style.dim}>{name}</h3>
                      <h4 className={style.dim}>Genre: {genres}</h4>
-                     <h4 className={style.dim}>Rating: {rating}	★</h4>
-                     <button onClick={handleClick()}>Detail</button>
+                     <h4 className={style.dim}>Rating: {rating}★</h4>
+
+                     <Link to={`/home/${id}`}>
+                        <button >Detail</button>
+                     </Link>
+
                   </div>
                ))
                :
@@ -57,8 +44,6 @@ useEffect(() => {
                </>
 
          }
-{/* 
-         {activo === true ? <DetailGame /> : ""} */}
 
       </>
 
