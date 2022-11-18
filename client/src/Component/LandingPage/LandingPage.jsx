@@ -2,10 +2,9 @@ import React from 'react';
 import styles from '../LandingPage/Landing.module.css'
 import fondo from '../../assets/landing.png'
 import git from '../../assets/github.png'
-
 import linked from '../../assets/linked.png'
-
 import { Link } from 'react-router-dom';
+
 const LandingPage = () => {
 
     return (

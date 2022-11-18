@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import BotonGrVg from '../BotonGrVg/BotonGrVg';
 import BotonOrder from '../BotonOrder/BotonOrder';
 import BotonRating from '../BotonRating/BotonRating';
-import Genres from '../Generos/Genres';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar'
 import Videogames from '../Videogames/Videogames';
@@ -16,8 +14,8 @@ const Home = () => {
     const videoxpag = useSelector(state => state.videoxpag)
     const videofilter = useSelector(state => state.videofiltrados)
 
-console.log("videopag", videoxpag);
-console.log("videofilter", videofilter);
+    console.log("videopag", videoxpag);
+    console.log("videofilter", videofilter);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(15)
@@ -29,37 +27,25 @@ console.log("videofilter", videofilter);
     const currentPost = videofilter.length ?
         videofilter.slice(indexOfFirstPost, indexOfLastPost)
         : videoxpag.slice(indexOfFirstPost, indexOfLastPost)//de 0-15
-
-
     //----paginado----//
-
-    const estado = useSelector(state => state.estado)
 
     //---order---//
     const [render, setRender] = useState(false)
     //---order---//
 
-
     //---rating---//
     const [rating, setRating] = useState(false)
     //---rating---/
 
-
     return (
         <>
             <div className={style.contain}>
-
                 <BotonGrVg />
                 <SearchBar />
                 <BotonRating setRating={setRating} rating={rating} />
                 <BotonOrder setRender={setRender} render={render} />
                 <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
-
-                {
-                    estado === "Videojuego" ?
-
-                        <Videogames currentPost={currentPost} /> : <Genres />
-                }
+                <Videogames currentPost={currentPost} />
 
             </div>
         </>

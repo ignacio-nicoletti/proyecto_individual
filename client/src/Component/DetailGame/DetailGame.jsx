@@ -20,11 +20,8 @@ const DetailGame = (props) => {
         <>
             <div className={style.contain}>
 
-
-
                 <img src={detail.imageUrl} className={style.portada} />
-
-
+                
                 <div>
 
                     <h1>{detail.name}</h1>
@@ -34,7 +31,6 @@ const DetailGame = (props) => {
                     <h3>Platforms: {detail.platforms}</h3>
                     <h3>Description:</h3><span>{detail.description}</span>
                     
-
                         {<Link to="/home">
                             <button className={style.button}>Home</button>
                         </Link>}

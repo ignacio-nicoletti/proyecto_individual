@@ -9,14 +9,10 @@ const BotonOrder = ({ setRender, render }) => {
     const disptach = useDispatch();
 
 
-
-
     const handleChange = (e) => {
         setRender(!render)
         disptach((setearOrder(e.target.value)))
     }
-
-
 
     return (
         <div className={style.contain}>
@@ -25,8 +21,6 @@ const BotonOrder = ({ setRender, render }) => {
                 <option value="">order</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
-
-
             </select>
 
         </div>

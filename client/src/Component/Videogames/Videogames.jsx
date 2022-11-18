@@ -1,17 +1,13 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filtrarXGenero, get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
 import carga from "../../assets/carga.gif"
-
 import { Link } from 'react-router-dom';
 
 const Videogames = ({ currentPost }) => {
 
    const dispatch = useDispatch()
-   // const generos=useSelector(state=>state.videoxpag)
-   // console.log(generos);
-
 
    useEffect(() => {
       dispatch(get_videogames());

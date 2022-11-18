@@ -5,15 +5,12 @@ const initial_state = {
     videoxpag: [],
     videofiltrados: [],
     Genres: [],
-    error: {},
-    estado: "Videojuego",
     order: "A-Z",
     Rating: "",
-    detail: {}
+    detail: {},
+    error: {},
 
 }
-
-
 
 export default function reducer(state = initial_state, action) {
 
@@ -23,7 +20,7 @@ export default function reducer(state = initial_state, action) {
             return { ...state, videogames: action.payload, videoxpag: action.payload }
 
         case FILTRARXNOMBRE:
-            return { ...state, videoxpag: action.payload,videofiltrados:action.payload }
+            return { ...state, videoxpag: action.payload, videofiltrados: action.payload }
 
 
         case FILTRARXGENERO:
@@ -38,7 +35,6 @@ export default function reducer(state = initial_state, action) {
             return { ...state, videofiltrados: Xgeneros }
 
 
-
         case SETEARESTADO:
             return { ...state, estado: action.payload }
 
@@ -49,7 +45,7 @@ export default function reducer(state = initial_state, action) {
                 : state.videoxpag
 
             const games =
-                action.payload === "A-Z" 
+                action.payload === "A-Z"
                     ?
                     arrayfilter.sort((a, b) => {
                         if (a.name > b.name) {
@@ -72,20 +68,13 @@ export default function reducer(state = initial_state, action) {
             return {
                 ...state,
                 videoxpag: games,
-                videofiltrados:games
+                videofiltrados: games
             };
 
         case RATING:
             const arrayrating = state.videofiltrados.length
                 ? state.videofiltrados
                 : state.videoxpag
-
-
-
-
-
-
-
             const rating =
                 action.payload === "Menor"
                     ? arrayrating.sort((a, b) => {
@@ -109,21 +98,15 @@ export default function reducer(state = initial_state, action) {
             return {
                 ...state,
                 videoxpag: rating,
-                videofiltrados:rating
+                videofiltrados: rating
             };
 
         case GET_DETAIL:
             return {
                 ...state, detail: action.payload
-
             }
 
-
         case ERROR: return { ...state, error: action.payload }
-
-
-
-
 
         default: return { ...state }
     }

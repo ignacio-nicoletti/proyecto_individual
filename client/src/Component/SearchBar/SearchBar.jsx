@@ -8,7 +8,6 @@ const SearchBar = () => {
     const disptach = useDispatch()
     const [search, setSearch] = useState("")
 
-
     const handleInput = (e) => {
 
         setSearch(e.target.value)
@@ -19,7 +18,6 @@ const SearchBar = () => {
             disptach(filtrarXVideogame(search))
         }
     }
-
 
     const ambasF = () => {
         disptach(get_videogames());
@@ -33,7 +31,6 @@ const SearchBar = () => {
             <input type="text" className={style.input} value={search} onChange={(e) => handleInput(e)} />
 
             <button className='' onClick={(e) => handleSubmit(e)}> search </button >
-
 
             {
                 search ?

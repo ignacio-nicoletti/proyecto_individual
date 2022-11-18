@@ -1,18 +1,13 @@
 import axios from 'axios'
-
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const ERROR = "ERROR";
-
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
 export const FILTRARXNOMBRE = "FILTRAXNOMBRE";
 export const FILTRARXGENERO = "FILTRARXGENERO";
-export const SETEARESTADO = "SETEARESTADO"
 export const ORDER = "ORDER";
 export const RATING = "RATING";
 export const GET_DETAIL = "GET_DETAIL";
 export const FILTRADODEGENERO = "FILTRADODEGENERO"
-
-
 
 
 export const get_videogames = () => {
@@ -40,7 +35,6 @@ export const get_videogames = () => {
 
     }
 }
-
 
 export const filtrarXVideogame = (name) => {
     return async function (dispatch) {
@@ -94,18 +88,6 @@ export const filtrarXGenero = () => {
 
 }
 
-
-export const setearEstado = (estado) => {
-    return {
-        type: SETEARESTADO,
-        payload: estado
-    }
-
-
-
-
-}
-
 export const setearOrder = (value) => {
     return {
         type: ORDER,
@@ -145,7 +127,6 @@ export const get_detail = (id) => {
 
     }
 }
-
 
 export const filtradoDeGenero = (value) => {
     return {

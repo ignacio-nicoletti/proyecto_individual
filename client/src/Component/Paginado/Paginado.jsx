@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './Paginado.module.css'
 
-
 export default function Paginado({ setCurrentPage, videoxpag, postPerPage }) {
   const pageNumbers = [];
 
@@ -13,12 +12,8 @@ export default function Paginado({ setCurrentPage, videoxpag, postPerPage }) {
       {pageNumbers &&
         pageNumbers.map((number) => (
           
-          
-         
-            
             <button  onClick={() => setCurrentPage(number)}>{number}</button>
          
-        
         ))}
     </div>
   );
