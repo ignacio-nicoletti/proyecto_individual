@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, SETEARESTADO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
@@ -9,6 +9,7 @@ const initial_state = {
     Rating: "",
     detail: {},
     error: {},
+
 
 }
 
@@ -33,10 +34,6 @@ export default function reducer(state = initial_state, action) {
                 action.payload === "" ?
                     state.videoxpag : state.videoxpag.filter((e) => e.genres.includes(action.payload))
             return { ...state, videofiltrados: Xgeneros }
-
-
-        case SETEARESTADO:
-            return { ...state, estado: action.payload }
 
         case ORDER:
 
@@ -107,6 +104,10 @@ export default function reducer(state = initial_state, action) {
             }
 
         case ERROR: return { ...state, error: action.payload }
+
+
+        case POSTVIDEOGAME: return { ...state, videogames: [...state.videogames, action.payload] }
+
 
         default: return { ...state }
     }

@@ -1,37 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filtrarXGenero, post_videogames } from '../../Redux/Actions/action';
 
 import style from './Form.module.css'
 
 const Form = () => {
 
-    const [input, setInput] = useState({
+
+    const dispatch = useDispatch()
+
+    //hacer un useefect de validation 
+    useEffect(() => {
+        dispatch(filtrarXGenero());
+    }, [dispatch])
+
+
+    const generos = useSelector(state => state.Genres)
+    const initialState = {
 
         name: "",
-        ReleaseDate: "",
-        Rating: "",
-        Platforms: "",
-        Genres: "",
-        ImageUrl: ""
-    })
+        description: "",
+        released: "",
+        rating: "",
+        platforms: "",
+        genres: [],
+        imageUrl: "",
+    }
+
+    const [input, setInput] = useState(initialState)
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        dispatch(post_videogames({
+            name: input.name,
+            description: input.description,
+            released: input.released,
+            rating: parseFloat(input.rating),//de string a number
+            platforms: input.platforms,
+            imageUrl: input.imageUrl,
+            genres: input.genres,
+            createdInDb: true
+        }))
+        setInput(initialState)
+    }
 
-        const videogame = {
+    const validateInput = (input) => {
+        const error = {}
+        if (!input.name.length) error.name = "Debe ingresar un name"
+        if (!input.released.length) error.released = "Debe ingresar un released"
+        if (!input.name.rating) error.rating = "Debe ingresar un rating"
+        if (!input.platforms.length) error.platforms = "Debe ingresar un platforms"
+        if (!input.genres.length) error.genres = "Debe ingresar un genres"
+        if (!input.imageUrl.length) error.imageUrl = "Debe ingresar un ImageUrl"
+        if (!input.description.length) error.description = "Debe ingresar un description"
 
-            name: document.querySelector("input[name='name']").value,
-            ReleaseDate: document.querySelector("input[name='ReleaseDate']").value,
-            Rating: document.querySelector("input[name='Rating']").value,
-            Platforms: document.querySelector("input[name='Platforms']").value,
-            Genres: document.querySelector("input[name='Genres']").value,
-            ImageUrl: document.querySelector("input[name='name']").value,
-            
-        }
-        console.log(videogame);
+        return error
     }
 
     const handleChange = (event) => {
+
         setInput({
             ...input,
             [event.target.name]: event.target.value
@@ -39,15 +67,23 @@ const Form = () => {
         validateInput(input)
     }
 
-    const validateInput=(input)=>{
-        if(!input.name.length){return "Debe ingresar un value"}
-        if(!input.ReleaseDate.length){return "Debe ingresar un value"}
-        if(!input.name.Rating){return "Debe ingresar un value"}
-        if(!input.Platforms.length){return "Debe ingresar un value"}
-        if(!input.Genres.length){return "Debe ingresar un value"}
-        if(!input.ImageUrl.length){return "Debe ingresar un value"}
+    const [option, setOption] = useState([])
+
+
+
+
+    const optionchange = (e) => {
+        setInput({
+            ...input, genres: [...input.genres, e.target.value]
+        })
+        setOption([
+            ...option, e.target.value
+        ])
+
     }
-    
+
+
+
     return (
 
         <div className={style.contain}>
@@ -62,28 +98,44 @@ const Form = () => {
                 </div>
 
                 <div className={style.contain}>
+                    <label htmlFor="">Description:</label>
+                    <input type="text" name='description' value={input.description} onChange={handleChange} />
+                </div>
+
+                <div className={style.contain}>
                     <label htmlFor="">ReleaseDate:</label>
-                    <input type="text" name='ReleaseDate' value={input.ReleaseDate} onChange={handleChange} />
+                    <input type="text" name='released' value={input.released} onChange={handleChange} />
                 </div>
 
                 <div className={style.contain}>
                     <label htmlFor="">Rating:</label>
-                    <input type="text" name='Rating' value={input.Rating} onChange={handleChange} />
+                    <input type="text" name='rating' value={input.rating} onChange={handleChange} />
                 </div>
 
                 <div className={style.contain}>
                     <label htmlFor="">Platforms:</label>
-                    <input type="text" name='Platforms' value={input.Platforms} onChange={handleChange} />
+                    <input type="text" name='platforms' value={input.platforms} onChange={handleChange} />
                 </div>
 
                 <div className={style.contain}>
                     <label htmlFor="">Genres:</label>
-                    <input type="text" name='Genres' value={input.Genres} onChange={handleChange} />
+
+
+                    <select onChange={optionchange}>
+
+                        {generos.map(genero => (
+                            <option value={genero.name}>{genero.name}</option>
+
+                        ))}
+                    </select>
+                    <input type="text" name='genres' value={option} onChange={handleChange} />
+
+
                 </div>
 
                 <div className={style.contain}>
                     <label htmlFor="">ImageUrl:</label>
-                    <input type="text" name='ImageUrl' value={input.ImageUrl} onChange={handleChange} />
+                    <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
                 </div>
 
                 <button type="submit" >create</button>

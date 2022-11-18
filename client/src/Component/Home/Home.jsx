@@ -14,9 +14,6 @@ const Home = () => {
     const videoxpag = useSelector(state => state.videoxpag)
     const videofilter = useSelector(state => state.videofiltrados)
 
-    console.log("videopag", videoxpag);
-    console.log("videofilter", videofilter);
-
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(15)
 

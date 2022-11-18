@@ -8,7 +8,7 @@ export const ORDER = "ORDER";
 export const RATING = "RATING";
 export const GET_DETAIL = "GET_DETAIL";
 export const FILTRADODEGENERO = "FILTRADODEGENERO"
-
+export const POSTVIDEOGAME = "POSTVIDEOGAME"
 
 export const get_videogames = () => {
 
@@ -131,13 +131,31 @@ export const get_detail = (id) => {
 export const filtradoDeGenero = (value) => {
     return {
         type: FILTRADODEGENERO,
-        payload:value,
+        payload: value,
     }
 
 
 
 }
 
-export const post_videogames = (videogame) => {
+export const post_videogames = (input) => {
+    return async function (dispatch) {
+        try {
+            const juegoC = await axios.post(`http://localhost:3001/videogames`, input)
+            return dispatch({
+                type: POSTVIDEOGAME,
+                payload: juegoC.data,
+            })
 
+        } catch (error) {
+            console.log(error);
+            return dispatch({
+                type: ERROR,
+                payload: error
+
+            })
+        }
+
+
+    }
 }

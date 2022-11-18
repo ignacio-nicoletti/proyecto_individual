@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
 
    try {
       let id = 1;
-      const idApi = await LLamarJuegos()
+      const idApi = await GameTotal()
       const  resultado = idApi.map((juego)=>juego.id)
 
       while (resultado.includes(id)) {
@@ -67,15 +67,14 @@ router.post("/", async (req, res) => {
                }
             })
 
-
-
-            crearVideojuego.addGenre(generoDb)
+            crearVideojuego.addGenre(generoDb)//vincula
          })
       }
       res.status(200).send("juego creado con exito");
 
    } catch (error) {
       res.status(404).send(error.message);
+      console.log(error);
    }
 
 });

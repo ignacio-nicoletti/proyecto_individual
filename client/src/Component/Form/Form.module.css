@@ -1,4 +1,6 @@
 .contain{
-
-    justify-content: center;
+display: flex;
+justify-content: center;
+/* flex-direction: column; */
+background-color: rgb(238, 11, 11);
 }
