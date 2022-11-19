@@ -14,7 +14,7 @@ const DetailGame = (props) => {
     }, [dispatch, id])
 
     const detail = useSelector(state => state.detail)
-
+console.log(detail);
 
     return (
         <>

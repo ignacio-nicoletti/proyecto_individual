@@ -13,20 +13,20 @@ const BotonRating = ({ setRating, rating }) => {
         disptach(setearRating(e.target.value))
     }
 
-return (
-    <div className={style.contain}>
-        <label>Rating: </label>
-        <select onChange={handleChange}>
+    return (
+        <div className={style.contain}>
+            <label>Rating: </label>
+            <select onChange={handleChange}>
+                <option value="">rating</option>
+                <option value="Mayor">Mayor</option>
+                <option value="Menor">Menor</option>
 
-            <option value="Mayor">Mayor</option>
-            <option value="Menor">Menor</option>
 
+            </select>
 
-        </select>
+        </div>
 
-    </div>
-
-);
+    );
 
 }
 

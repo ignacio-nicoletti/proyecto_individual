@@ -55,6 +55,7 @@ const Form = () => {
             createdInDb: true
         }))
         setInput(initialState)
+        alert("juego creado con exito")
     }
 
     const validateInput = (input) => {
@@ -79,7 +80,6 @@ const Form = () => {
         validateInput(input)
     }
 
-
     const optionchange = (e) => {
         setInput({
             ...input, genres: [...input.genres, e.target.value]
@@ -89,9 +89,6 @@ const Form = () => {
         ])
 
     }
-
-
-
 
     const optionchangeP = (e) => {
 
@@ -135,16 +132,6 @@ const Form = () => {
                     <label htmlFor="" className={style.labels}>Rating:</label>
                     <input type="text" name='rating' value={input.rating} onChange={handleChange} />
                 </div>
-                {/* 
-                <div className={style.contain_div}>
-                    <label htmlFor="" className={style.labels}>Platforms:</label>
-                    <input type="text" name='platforms' value={input.platforms} onChange={handleChange} />
-                </div> */}
-
-
-
-
-
 
                 <div className={style.contain_div}>
                     <label htmlFor="" className={style.labels}>Platform:</label>
@@ -159,7 +146,7 @@ const Form = () => {
                     </select>
 
                     <input type="text" name='platform' value={option2} onChange={handleChange} />
-                    
+
                 </div>
 
                 <div className={style.contain_div}>
