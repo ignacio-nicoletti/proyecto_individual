@@ -30,7 +30,7 @@ const SearchBar = () => {
 
             <input type="text" className={style.input} value={search} onChange={(e) => handleInput(e)} />
 
-            <button className='' onClick={(e) => handleSubmit(e)}> search </button >
+            <button className={style.search} onClick={(e) => handleSubmit(e)}> search </button >
 
             {
                 search ?

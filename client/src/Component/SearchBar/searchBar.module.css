@@ -1,11 +1,18 @@
+.contain {
+
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 10px 10px 50%;
+}
+
 .input {
     border-radius: 10px;
 }
 
-.contain {
-    justify-content: center;
-    flex-direction: column;
-    margin: 10px 10px 10px 50%;
+.search {
+
+    margin: 10px;
+
 
 
 }

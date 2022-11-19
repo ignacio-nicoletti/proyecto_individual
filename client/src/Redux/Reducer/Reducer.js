@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME, BD_API } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
@@ -103,11 +103,26 @@ export default function reducer(state = initial_state, action) {
                 ...state, detail: action.payload
             }
 
-        case ERROR: return { ...state, error: action.payload }
+        case BD_API:
+            const todosJ = state.videogames;
+            let JFiltrados =
+                action.payload === "creados"
+                    ? todosJ.filter((j) => j.createdInDb) :
+                    action.payload === "api"
+                        ? todosJ.filter((j) => !j.createdInDb) : ""
+
+            return {
+                ...state,
+
+
+                videofiltrados: JFiltrados
+            }
+
 
 
         case POSTVIDEOGAME: return { ...state, videogames: [...state.videogames, action.payload] }
 
+        case ERROR: return { ...state, error: action.payload }
 
         default: return { ...state }
     }

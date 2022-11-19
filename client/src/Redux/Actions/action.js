@@ -7,8 +7,9 @@ export const FILTRARXGENERO = "FILTRARXGENERO";
 export const ORDER = "ORDER";
 export const RATING = "RATING";
 export const GET_DETAIL = "GET_DETAIL";
-export const FILTRADODEGENERO = "FILTRADODEGENERO"
-export const POSTVIDEOGAME = "POSTVIDEOGAME"
+export const FILTRADODEGENERO = "FILTRADODEGENERO";
+export const POSTVIDEOGAME = "POSTVIDEOGAME";
+export const BD_API = "BD_API";
 
 export const get_videogames = () => {
 
@@ -104,6 +105,14 @@ export const setearRating = (value) => {
 
 }
 
+export const setearBD_api = (value) => {
+
+    return {
+        type: BD_API,
+        payload: value
+    }
+}
+
 export const get_detail = (id) => {
     return async function (dispatch) {
         try {
@@ -133,9 +142,6 @@ export const filtradoDeGenero = (value) => {
         type: FILTRADODEGENERO,
         payload: value,
     }
-
-
-
 }
 
 export const post_videogames = (input) => {

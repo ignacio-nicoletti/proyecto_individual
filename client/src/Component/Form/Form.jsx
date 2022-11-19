@@ -16,19 +16,31 @@ const Form = () => {
     }, [dispatch])
 
 
-    const generos = useSelector(state => state.Genres)
+
+    const platforms = ["PC", "PlayStation 3", "PlayStation 4", "PlayStation 5", "macOS", "Linux", "Xbox360", "Android", "Nintendo Switch", "iOS", "Xbox One", "Xbox Series S/X"]
+
+
+
     const initialState = {
 
         name: "",
         description: "",
         released: "",
         rating: "",
-        platforms: "",
+        platforms: [],
         genres: [],
         imageUrl: "",
     }
+    const generos = useSelector(state => state.Genres)//hago un mapeo para las opciones
+
 
     const [input, setInput] = useState(initialState)
+
+    const [option, setOption] = useState([])//generos
+
+    const [option2, setOption2] = useState([])//Platforms
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -67,10 +79,6 @@ const Form = () => {
         validateInput(input)
     }
 
-    const [option, setOption] = useState([])
-
-
-
 
     const optionchange = (e) => {
         setInput({
@@ -84,41 +92,78 @@ const Form = () => {
 
 
 
+
+    const optionchangeP = (e) => {
+
+        setInput({
+            ...input, platforms: [...input.platforms, e.target.value]
+        })
+        setOption2([
+            ...option2, e.target.value
+        ])
+
+
+
+    }
+
+
+
     return (
 
         <div className={style.contain}>
 
             <h2>Crear Videojuego</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={style.formulario}>
 
-                <div className={style.contain}>
-                    <label htmlFor="">Name:</label>
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Name:</label>
                     <input type="text" name='name' value={input.name} onChange={handleChange} />
                 </div>
 
-                <div className={style.contain}>
-                    <label htmlFor="">Description:</label>
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Description:</label>
                     <input type="text" name='description' value={input.description} onChange={handleChange} />
                 </div>
 
-                <div className={style.contain}>
-                    <label htmlFor="">ReleaseDate:</label>
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>ReleaseDate:</label>
                     <input type="text" name='released' value={input.released} onChange={handleChange} />
                 </div>
 
-                <div className={style.contain}>
-                    <label htmlFor="">Rating:</label>
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Rating:</label>
                     <input type="text" name='rating' value={input.rating} onChange={handleChange} />
                 </div>
-
-                <div className={style.contain}>
-                    <label htmlFor="">Platforms:</label>
+                {/* 
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Platforms:</label>
                     <input type="text" name='platforms' value={input.platforms} onChange={handleChange} />
+                </div> */}
+
+
+
+
+
+
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Platform:</label>
+
+
+                    <select onChange={optionchangeP}>
+
+                        {platforms.map(platform => (
+                            <option value={platform}>{platform}</option>
+
+                        ))}
+                    </select>
+
+                    <input type="text" name='platform' value={option2} onChange={handleChange} />
+                    
                 </div>
 
-                <div className={style.contain}>
-                    <label htmlFor="">Genres:</label>
+                <div className={style.contain_div}>
+                    <label htmlFor="" className={style.labels}>Genres:</label>
 
 
                     <select onChange={optionchange}>
@@ -134,11 +179,11 @@ const Form = () => {
                 </div>
 
                 <div className={style.contain}>
-                    <label htmlFor="">ImageUrl:</label>
+                    <label htmlFor="" className={style.labels}>ImageUrl:</label>
                     <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
                 </div>
 
-                <button type="submit" >create</button>
+                <button type="submit" className={style.button}>create</button>
             </form>
 
         </div>

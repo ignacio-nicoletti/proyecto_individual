@@ -27,6 +27,7 @@ const Videogames = ({ currentPost }) => {
                      <h3 className={style.dim}>{name}</h3>
                      <h4 className={style.dim}>Genre: {genres}</h4>
                      <h4 className={style.dim}>Rating: {rating}★</h4>
+                     
 
                      <Link to={`/home/${id}`}>
                         <button >Detail</button>

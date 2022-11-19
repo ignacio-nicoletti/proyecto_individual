@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import BotonBDApi from '../Boton-BDAPi/BotonBDApi';
 import BotonGrVg from '../BotonGrVg/BotonGrVg';
 import BotonOrder from '../BotonOrder/BotonOrder';
 import BotonRating from '../BotonRating/BotonRating';
@@ -38,9 +39,10 @@ const Home = () => {
         <>
             <div className={style.contain}>
                 <BotonGrVg />
-                <SearchBar />
                 <BotonRating setRating={setRating} rating={rating} />
                 <BotonOrder setRender={setRender} render={render} />
+                <BotonBDApi/>
+                <SearchBar />
                 <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
                 <Videogames currentPost={currentPost} />
 
