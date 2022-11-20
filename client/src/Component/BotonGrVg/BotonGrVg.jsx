@@ -1,6 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import { filtradoDeGenero, setearEstado } from "../../Redux/Actions/action";
+import { filtradoDeGenero } from "../../Redux/Actions/action";
 
 import style from './BotonGrVg.module.css'
 

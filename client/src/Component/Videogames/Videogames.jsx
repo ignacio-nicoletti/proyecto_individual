@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { filtrarXGenero, get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
-import carga from "../../assets/carga.gif"
+// import carga from "../../assets/carga.gif"
 import { Link } from 'react-router-dom';
+import Carga from '../Carga/Carga';
 
 const Videogames = ({ currentPost }) => {
 
@@ -20,7 +21,8 @@ const Videogames = ({ currentPost }) => {
       <>
          {
             currentPost.length > 0
-               ? currentPost.map(({ imageUrl, name, genres, rating, id }) => (
+                
+              ? currentPost.map(({ imageUrl, name, genres, rating, id }) => (
                   <div className={style.contain} key={name}>
 
                      <img src={imageUrl} alt="Foto game" className={style.portada} />
@@ -37,18 +39,14 @@ const Videogames = ({ currentPost }) => {
                ))
                :
                <>
-                  <img src={carga} alt="" />
+                  {/* <img src={carga} alt="" /> */}
+
+                  <Carga/>
                </>
 
          }
 
       </>
-
-
-
-
-
-
 
    )
 }

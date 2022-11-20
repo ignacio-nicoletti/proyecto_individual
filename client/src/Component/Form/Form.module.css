@@ -7,31 +7,23 @@ body {
 .contain {
     background-color: antiquewhite;
     position: relative;
- 
- 
     overflow: hidden;
-
-
 }
 
 
 .input {
     height: 35px;
-    width: 98%;
+    width: 98%;  
     font-size: 25px;
     font-family: inherit;
 }
 
 .formulario {
-
-    padding: auto;
-    background-color: rgb(255, 145, 0);
-
-
+    padding-left: 30%;
+    background-color: #474647;;
 }
 
-.button {
-    
+.button { 
     background: rgb(148, 243, 4);
     font-size: large;
     color: black;
@@ -41,15 +33,22 @@ body {
     margin-bottom: 35px;
     margin-top: 20px;
     cursor: pointer;
-    margin-left:40%
+    margin-left:5%;
 }
 
 
-.labels {
+label{
     font-size: 20px;
     display: block;
     font-weight: bold;
     font-style: italic;
-    margin-block: 15px;
-    margin-left:40%
+    margin-left:15%
+}
+
+.platform{
+    margin-right:30%;
+}
+
+h2{
+    padding-left: 25%;
 }

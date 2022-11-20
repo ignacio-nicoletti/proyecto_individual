@@ -98,9 +98,6 @@ const Form = () => {
         setOption2([
             ...option2, e.target.value
         ])
-
-
-
     }
 
 
@@ -133,10 +130,8 @@ const Form = () => {
                     <input type="text" name='rating' value={input.rating} onChange={handleChange} />
                 </div>
 
-                <div className={style.contain_div}>
+                <div className={style.platform}>
                     <label htmlFor="" className={style.labels}>Platform:</label>
-
-
                     <select onChange={optionchangeP}>
 
                         {platforms.map(platform => (
@@ -149,7 +144,7 @@ const Form = () => {
 
                 </div>
 
-                <div className={style.contain_div}>
+                <div className={style.genres}>
                     <label htmlFor="" className={style.labels}>Genres:</label>
 
 
@@ -165,7 +160,7 @@ const Form = () => {
 
                 </div>
 
-                <div className={style.contain}>
+                <div >
                     <label htmlFor="" className={style.labels}>ImageUrl:</label>
                     <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
                 </div>

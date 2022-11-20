@@ -41,7 +41,7 @@ const Home = () => {
                 <BotonGrVg />
                 <BotonRating setRating={setRating} rating={rating} />
                 <BotonOrder setRender={setRender} render={render} />
-                <BotonBDApi/>
+                <BotonBDApi />
                 <SearchBar />
                 <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
                 <Videogames currentPost={currentPost} />

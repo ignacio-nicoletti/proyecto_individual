@@ -5,7 +5,7 @@ const NavBar = () => {
 
       <div className={style.containT}>
 
-         <Link to="/" className={style.contain}>Home</Link>
+         <Link to="/home" className={style.contain}>Home</Link>
 
          <Link to="/create" className={style.contain}>create</Link>
 

@@ -20,8 +20,8 @@ console.log(detail);
         <>
             <div className={style.contain}>
 
-                <img src={detail.imageUrl} className={style.portada} />
-                
+                <img src={detail.imageUrl} alt="portada" className={style.portada} />
+               
                 <div>
 
                     <h1>{detail.name}</h1>
@@ -31,7 +31,7 @@ console.log(detail);
                     <h3>Platforms: {detail.platforms}</h3>
                     <h3>Description:</h3><span>{detail.description}</span>
                     
-                        {<Link to="/home">
+                        {<Link to="/home/">
                             <button className={style.button}>Home</button>
                         </Link>}
 

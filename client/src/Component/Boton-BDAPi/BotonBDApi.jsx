@@ -1,5 +1,5 @@
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setearBD_api } from "../../Redux/Actions/action";
 
 import style from './BotonBDApi.module.css'
@@ -21,7 +21,6 @@ const BotonBDApi = () => {
 
             <div>
                 <select className={style.selectors} onChange={(e) => { handleChange(e) }}>
-
                     <option selected disabled>Juegos</option>
 
                     {Juegos.map((op, i) => {
