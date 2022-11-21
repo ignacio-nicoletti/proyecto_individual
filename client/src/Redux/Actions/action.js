@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const ERROR = "ERROR";
@@ -173,10 +173,10 @@ export const delete_game = (id) => {
 
     return async function (dispatch) {
         try {
-             await axios.delete(`http://localhost:3001/videogame/${id}`)
+             const borrado = await axios.delete(`http://localhost:3001/videogame/${id}`)
             return dispatch({
                 type: DELETE,
-                payload: id,
+                payload: borrado.data,
 
             })
         } catch (error) {

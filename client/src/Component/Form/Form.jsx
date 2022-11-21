@@ -8,11 +8,35 @@ import style from './Form.module.css'
 const Form = () => {
 
 
+    const validateInput = (input) => {
+        const error = {}
+        if (!input.name.length||input.name.length<3) {
+            error.name = 'name is required with more than 3 letters';}
+        // } else if (!/^[a-zA-Z0-9]*$/.test(input.name)) {
+        //     error.name = 'Name is invalid'
+        // }
+
+        if (!input.released) { 
+            error.released = "released is required" }
+        else if (!/^\d{2,4}\/\d{1,2}\/\d{1,2}$/.test(input.released)) {
+            error.Released = 'release date must be a date of YYYY/MM/DD'
+        }
+
+        if (!input.name.rating) error.rating = "rating is required"
+        if (!input.platforms.length) error.platforms = "Debe ingresar un platforms"
+        if (!input.genres.length) error.genres = "Debe ingresar un genres"
+        if (!input.imageUrl.length) error.imageUrl = "Debe ingresar un ImageUrl"
+        if (!input.description.length) error.description = "Debe ingresar un description"
+
+        return error
+    }
+
     const dispatch = useDispatch()
 
     //hacer un useefect de validation 
     useEffect(() => {
         dispatch(filtrarXGenero());
+        setError(validateInput(input))
     }, [dispatch])
 
 
@@ -40,6 +64,7 @@ const Form = () => {
 
     const [option2, setOption2] = useState([])//Platforms
 
+    const [error, setError] = useState({})
 
 
     const handleSubmit = (event) => {
@@ -60,18 +85,12 @@ const Form = () => {
         alert("juego creado con exito")
     }
 
-    const validateInput = (input) => {
-        const error = {}
-        if (!input.name.length) error.name = "Debe ingresar un name"
-        if (!input.released.length) error.released = "Debe ingresar un released"
-        if (!input.name.rating) error.rating = "Debe ingresar un rating"
-        if (!input.platforms.length) error.platforms = "Debe ingresar un platforms"
-        if (!input.genres.length) error.genres = "Debe ingresar un genres"
-        if (!input.imageUrl.length) error.imageUrl = "Debe ingresar un ImageUrl"
-        if (!input.description.length) error.description = "Debe ingresar un description"
 
-        return error
-    }
+    useEffect(() => {
+       
+        setError(validateInput(input))
+    }, [input])
+
 
     const handleChange = (event) => {
 
@@ -115,21 +134,25 @@ const Form = () => {
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Name:</label>
                         <input type="text" name='name' value={input.name} onChange={handleChange} />
+                        {error.name ? <small>{error.name}</small> :''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Description:</label>
                         <input type="text" name='description' value={input.description} onChange={handleChange} />
+                        {error.description ? <small>{error.description}</small> :''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>ReleaseDate:</label>
                         <input type="text" name='released' value={input.released} onChange={handleChange} />
+                        {error.released ? <small>{error.released}</small> :''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Rating:</label>
                         <input type="text" name='rating' value={input.rating} onChange={handleChange} />
+                        {error.rating ? <small>{error.rating}</small> :''}
                     </div>
 
                     <div className={style.platform}>
@@ -143,6 +166,7 @@ const Form = () => {
                         </select>
 
                         <input type="text" name='platform' value={option2} onChange={handleChange} />
+                        {error.platforms ? <small>{error.platforms}</small> :''}
 
                     </div>
 
@@ -158,6 +182,7 @@ const Form = () => {
                             ))}
                         </select>
                         <input type="text" name='genres' value={option} onChange={handleChange} />
+                        {error.genres ? <small>{error.genres}</small> :''}
 
 
                     </div>
@@ -165,6 +190,7 @@ const Form = () => {
                     <div >
                         <label htmlFor="" className={style.labels}>ImageUrl:</label>
                         <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
+                        {error.imageUrl ? <small>{error.imageUrl}</small> :''}
                     </div>
 
                     <button type="submit" className={style.button}>create</button>

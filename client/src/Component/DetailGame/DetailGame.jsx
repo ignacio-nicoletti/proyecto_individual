@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { delete_game, get_detail } from "../../Redux/Actions/action";
+import { delete_game, get_detail, get_videogames } from "../../Redux/Actions/action";
 import style from './DetailGame.module.css'
 import { Link } from 'react-router-dom';
 
@@ -15,14 +15,18 @@ const DetailGame = (props) => {
 
 
     const detail = useSelector(state => state.detail)
-    
-
-    
-    // const handleDelete = (id) => {
-    //     dispatch(delete_game(id))
-    // }
 
 
+
+    const handleDelete = (id) => {
+        dispatch(delete_game(id))
+    }
+
+
+    const handleClick = () => {
+        dispatch(get_videogames());
+
+    }
 
 
     return (
@@ -41,16 +45,10 @@ const DetailGame = (props) => {
                     <h3>Description:</h3><span>{detail.description}</span>
 
                     {<Link to="/home/">
-                        <button className={style.button}>Home</button>
+                        <button className={style.button} onClick={handleClick}>Home</button>
                     </Link>}
 
-
-
-
-                    {/* <Link to={`/home`}>
-                        <button onClick={handleDelete(id)}>delete</button>
-                    </Link> */}
-{console.log(detail)}
+                    <button onClick={handleDelete(id)}>delete</button>
                 </div>
             </div>
         </>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, } from 'react-redux';
-import { filtrarXGenero, get_videogames } from '../../Redux/Actions/action';
+import { delete_game, filtrarXGenero, get_videogames } from '../../Redux/Actions/action';
 import style from './Videogames.module.css'
 import { Link } from 'react-router-dom';
 import Carga from '../Carga/Carga';
@@ -12,10 +12,12 @@ const Videogames = ({ currentPost }) => {
    useEffect(() => {
       dispatch(get_videogames());
       dispatch(filtrarXGenero());
+     
    }, [dispatch])
+  
+  
+  
 
-   
-   
    return (
 
       <>
@@ -29,10 +31,17 @@ const Videogames = ({ currentPost }) => {
                      <h4 className={style.dim}>Genre: {genres}</h4>
                      <h4 className={style.dim}>Rating: {rating}★</h4>
 
+
+                   
+
                      <Link to={`/home/${id}`}>
                         <button>Detail</button>
                      </Link>
-                     
+
+                  
+
+
+
                   </div>
                ))
                :
