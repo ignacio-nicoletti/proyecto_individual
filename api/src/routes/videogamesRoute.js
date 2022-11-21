@@ -5,7 +5,7 @@ const { Videogame, Genre } = require("../db.js");
 const { Op } = require("sequelize")
 
 const axios = require("axios");
-const { ApiGame, GameTotal, TotalDetail, ApiDetail, LLamarJuegos } = require("../Controllers/videogameControl.js");
+const { ApiGame, GameTotal, TotalDetail, ApiDetail, LLamarJuegos} = require("../Controllers/videogameControl.js");
 
 
 
@@ -22,10 +22,10 @@ router.get("/", async (req, res) => {
             juego.name.toLowerCase().includes(name.toLowerCase()))
 
          if (Jfiltrado.length) {
-           return res.status(200).send(Jfiltrado)
+            return res.status(200).send(Jfiltrado)
          }
          else { return res.status(400).send("no existe ese juego") }
-        
+
       }
       res.status(200).send(juegos)
    } catch (error) {
@@ -39,9 +39,13 @@ router.post("/", async (req, res) => {
    const { name, description, released, rating, platforms, imageUrl, genres, createdInDb } = req.body;
 
    try {
+
+      
+
       let id = 1;
       const idApi = await GameTotal()
-      const  resultado = idApi.map((juego)=>juego.id)
+      const resultado = idApi.map(juego => juego.id)
+      console.log(resultado);
 
       while (resultado.includes(id)) {
          id++

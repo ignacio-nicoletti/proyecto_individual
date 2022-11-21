@@ -131,7 +131,14 @@ const TotalDetail = async () => {
 	return (unionDetail);
 }
 
-module.exports = { GameTotal, TotalDetail, ApiDetail,DbDetail,LLamarJuegos  }
+
+const getMaxId = async () => {
+    const entities = await GameTotal();
+    return Math.max(...entities.map(x => x.id)); //me da el id mas alto 
+}
+
+
+module.exports = { GameTotal, TotalDetail, ApiDetail,DbDetail,LLamarJuegos,getMaxId  }
 
 //
 //

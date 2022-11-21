@@ -55,6 +55,8 @@ const Form = () => {
             createdInDb: true
         }))
         setInput(initialState)
+        setOption([])
+        setOption2([])
         alert("juego creado con exito")
     }
 
@@ -103,71 +105,72 @@ const Form = () => {
 
 
     return (
+        <div className={style.body}>
+            <div className={style.contain}>
 
-        <div className={style.contain}>
+                <h2>Crear Videojuego</h2>
 
-            <h2>Crear Videojuego</h2>
+                <form onSubmit={handleSubmit} className={style.formulario}>
 
-            <form onSubmit={handleSubmit} className={style.formulario}>
+                    <div className={style.contain_div}>
+                        <label htmlFor="" className={style.labels}>Name:</label>
+                        <input type="text" name='name' value={input.name} onChange={handleChange} />
+                    </div>
 
-                <div className={style.contain_div}>
-                    <label htmlFor="" className={style.labels}>Name:</label>
-                    <input type="text" name='name' value={input.name} onChange={handleChange} />
-                </div>
+                    <div className={style.contain_div}>
+                        <label htmlFor="" className={style.labels}>Description:</label>
+                        <input type="text" name='description' value={input.description} onChange={handleChange} />
+                    </div>
 
-                <div className={style.contain_div}>
-                    <label htmlFor="" className={style.labels}>Description:</label>
-                    <input type="text" name='description' value={input.description} onChange={handleChange} />
-                </div>
+                    <div className={style.contain_div}>
+                        <label htmlFor="" className={style.labels}>ReleaseDate:</label>
+                        <input type="text" name='released' value={input.released} onChange={handleChange} />
+                    </div>
 
-                <div className={style.contain_div}>
-                    <label htmlFor="" className={style.labels}>ReleaseDate:</label>
-                    <input type="text" name='released' value={input.released} onChange={handleChange} />
-                </div>
+                    <div className={style.contain_div}>
+                        <label htmlFor="" className={style.labels}>Rating:</label>
+                        <input type="text" name='rating' value={input.rating} onChange={handleChange} />
+                    </div>
 
-                <div className={style.contain_div}>
-                    <label htmlFor="" className={style.labels}>Rating:</label>
-                    <input type="text" name='rating' value={input.rating} onChange={handleChange} />
-                </div>
+                    <div className={style.platform}>
+                        <label htmlFor="" className={style.labels}>Platform:</label>
+                        <select onChange={optionchangeP}>
 
-                <div className={style.platform}>
-                    <label htmlFor="" className={style.labels}>Platform:</label>
-                    <select onChange={optionchangeP}>
+                            {platforms.map(platform => (
+                                <option value={platform}>{platform}</option>
 
-                        {platforms.map(platform => (
-                            <option value={platform}>{platform}</option>
+                            ))}
+                        </select>
 
-                        ))}
-                    </select>
+                        <input type="text" name='platform' value={option2} onChange={handleChange} />
 
-                    <input type="text" name='platform' value={option2} onChange={handleChange} />
+                    </div>
 
-                </div>
-
-                <div className={style.genres}>
-                    <label htmlFor="" className={style.labels}>Genres:</label>
-
-
-                    <select onChange={optionchange}>
-
-                        {generos.map(genero => (
-                            <option value={genero.name}>{genero.name}</option>
-
-                        ))}
-                    </select>
-                    <input type="text" name='genres' value={option} onChange={handleChange} />
+                    <div className={style.genres}>
+                        <label htmlFor="" className={style.labels}>Genres:</label>
 
 
-                </div>
+                        <select onChange={optionchange}>
 
-                <div >
-                    <label htmlFor="" className={style.labels}>ImageUrl:</label>
-                    <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
-                </div>
+                            {generos.map(genero => (
+                                <option value={genero.name}>{genero.name}</option>
 
-                <button type="submit" className={style.button}>create</button>
-            </form>
+                            ))}
+                        </select>
+                        <input type="text" name='genres' value={option} onChange={handleChange} />
 
+
+                    </div>
+
+                    <div >
+                        <label htmlFor="" className={style.labels}>ImageUrl:</label>
+                        <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
+                    </div>
+
+                    <button type="submit" className={style.button}>create</button>
+                </form>
+
+            </div>
         </div>
 
     )

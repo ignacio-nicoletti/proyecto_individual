@@ -13,7 +13,6 @@ const BotonBDApi = () => {
     const handleChange = (e) => {
 
         dispatch(setearBD_api(e.target.value))
-        console.log(e.target.value);
     }
 
     return (

@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      //autoIncrement:true,
+      // autoIncrement:true,
      
     },
     // idApi:{--------------------------modo xbase

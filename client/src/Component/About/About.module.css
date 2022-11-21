@@ -1,0 +1,39 @@
+.fondo {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.p {
+    position: absolute;
+    color: #5ded25;
+    display: flex;
+    max-width: 350px;
+    padding-left: 20%;
+    animation: eating-path 10s linear infinite;
+
+}
+
+@keyframes eating-path {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    70% {
+
+        box-shadow: 0px 0px 100px  rgba(16, 221, 40, 0.6);
+    }
+
+    100% {
+        transform: translateY(500%);
+        /* hace que las bolas desplacen der-izq*/
+    }
+}
+
+
+.button {
+    position: absolute;
+    padding-left: 80%;
+    padding-top: 40%;
+}

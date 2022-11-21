@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { Videogame, Genre } = require("../db")//genre se usa en Xbase
 const router = Router()
 //const { Op } = require('sequelize');-->modo xbase
-const { ApiDetail, DbDetail } = require("../Controllers/videogameControl");
+const { ApiDetail, DbDetail, TotalDetail } = require("../Controllers/videogameControl");
 
 
 
@@ -17,8 +17,12 @@ router.get("/:id", async (req, res) => {
 
 
         const match = detailapi.find((el) => el.id === parseInt(id))
+
         const match2 = detailBD.find((el) => el.id === parseInt(id))
-        res.status(200).send([match,match2]);
+
+        res.status(200).send([match, match2]);
+
+
 
     } catch (error) {
         res.status(500).send(error.message)

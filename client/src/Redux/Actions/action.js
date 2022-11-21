@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const ERROR = "ERROR";
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
@@ -10,6 +11,8 @@ export const GET_DETAIL = "GET_DETAIL";
 export const FILTRADODEGENERO = "FILTRADODEGENERO";
 export const POSTVIDEOGAME = "POSTVIDEOGAME";
 export const BD_API = "BD_API";
+export const DELETE = "DELETE";
+
 
 export const get_videogames = () => {
 
@@ -122,7 +125,7 @@ export const get_detail = (id) => {
 
             return dispatch({
                 type: GET_DETAIL,
-                payload: detail[0]
+                payload:detail[0]  
 
             })
 
@@ -165,3 +168,24 @@ export const post_videogames = (input) => {
 
     }
 }
+
+export const delete_game = (id) => {
+
+    return async function (dispatch) {
+        try {
+             await axios.delete(`http://localhost:3001/videogame/${id}`)
+            return dispatch({
+                type: DELETE,
+                payload: id,
+
+            })
+        } catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error
+            })
+        }
+    }
+
+
+} 

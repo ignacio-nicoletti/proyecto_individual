@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME, BD_API } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME, BD_API, DELETE } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
@@ -31,8 +31,10 @@ export default function reducer(state = initial_state, action) {
         case FILTRADODEGENERO:
 
             const Xgeneros =
-                action.payload === "" ?
-                    state.videoxpag : state.videoxpag.filter((e) => e.genres.includes(action.payload))
+                action.payload === ""
+                    ? state.videoxpag
+                    : state.videoxpag.filter((e) =>
+                        e.genres.includes(action.payload))
             return { ...state, videofiltrados: Xgeneros }
 
         case ORDER:
@@ -118,9 +120,16 @@ export default function reducer(state = initial_state, action) {
                 videofiltrados: JFiltrados
             }
 
+        case POSTVIDEOGAME:
+            return {
+                ...state, videogames: [...state.videogames, action.payload]
+            }
+
+        case DELETE:
+            const deleteVideogames = state.videofiltrados.filter((v) => v.id !== action.payload)
+            return { ...state, videofiltrados: deleteVideogames }
 
 
-        case POSTVIDEOGAME: return { ...state, videogames: [...state.videogames, action.payload] }
 
         case ERROR: return { ...state, error: action.payload }
 

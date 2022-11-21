@@ -22,7 +22,7 @@ const BotonGrVg = () => {
             <div>
                 <select className={style.selectors} onChange={(e) => { handleChange(e) }}>
 
-                    <option selected disabled>Choose a genre...</option>
+                    <option selected >Choose a genre...</option>
 
                     {generos.map((op, i) => {
                         return <option value={op.name} key={i}>{op.name}</option>
