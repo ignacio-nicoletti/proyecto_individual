@@ -35,7 +35,7 @@ const Videogames = ({ currentPost }) => {
                    
 
                      <Link to={`/home/${id}`}>
-                        <button>Detail</button>
+                        <button className={style.det}>Detail</button>
                      </Link>
 
                   

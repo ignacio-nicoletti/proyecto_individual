@@ -15,7 +15,7 @@ const BotonRating = ({ setRating, rating }) => {
 
     return (
         <div className={style.contain}>
-            <select onChange={handleChange}>
+            <select onChange={handleChange} className={style.select}>
                 <option value="rating">rating</option>
                 <option value="Mayor">Mayor</option>
                 <option value="Menor">Menor</option>

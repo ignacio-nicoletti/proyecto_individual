@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_game, get_detail, get_videogames } from "../../Redux/Actions/action";
 import style from './DetailGame.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const DetailGame = (props) => {
 
     const dispatch = useDispatch();
-    let id = props.match.params.id
+    const { id } = useParams();
 
     useEffect(() => {
         dispatch(get_detail(id));
@@ -17,8 +17,7 @@ const DetailGame = (props) => {
     const detail = useSelector(state => state.detail)
 
 
-
-    const handleDelete = (id) => {
+    const handleDelete = () => {
         dispatch(delete_game(id))
     }
 
@@ -48,7 +47,11 @@ const DetailGame = (props) => {
                         <button className={style.button} onClick={handleClick}>Home</button>
                     </Link>}
 
-                    <button onClick={handleDelete(id)}>delete</button>
+                    {
+                        detail.createdInDb
+                            ? <button onClick={handleDelete}>delete</button> : ""
+
+                    }
                 </div>
             </div>
         </>

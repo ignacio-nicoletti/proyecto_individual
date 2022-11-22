@@ -193,7 +193,7 @@ const Form = () => {
                         {error.imageUrl ? <small>{error.imageUrl}</small> :''}
                     </div>
 
-                    <button type="submit" className={style.button}>create</button>
+                    <button type="submit" className={style.button} disabled={true}>create</button>
                 </form>
 
             </div>

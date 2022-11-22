@@ -20,7 +20,7 @@ const BotonGrVg = () => {
         <div className={style.contain}>
 
             <div>
-                <select className={style.selectors} onChange={(e) => { handleChange(e) }}>
+                <select className={style.select} onChange={(e) => { handleChange(e) }}>
 
                     <option selected >Choose a genre...</option>
 

@@ -16,7 +16,7 @@ const BotonOrder = ({ setRender, render }) => {
 
     return (
         <div className={style.contain}>
-            <select onChange={handleChange}>
+            <select onChange={handleChange} className={style.select}>
                 <option value="" disable>order</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>

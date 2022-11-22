@@ -12,20 +12,21 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
 
     try {
-        const detailapi = await ApiDetail(id);
-        const detailBD = await DbDetail(id);
+        let match = [];
+        if (id.length < 6) {
+            const detailapi = await ApiDetail(id);
+            match = detailapi.find((el) => el.id === parseInt(id))
+        } else {
+            match = await Videogame.findByPk(id)
+        }
 
-
-        const match = detailapi.find((el) => el.id === parseInt(id))
-
-        const match2 = detailBD.find((el) => el.id === parseInt(id))
-
-        res.status(200).send([match, match2]);
+        res.status(200).send(match);
 
 
 
     } catch (error) {
         res.status(500).send(error.message)
+        console.log(error);
     }
 });
 

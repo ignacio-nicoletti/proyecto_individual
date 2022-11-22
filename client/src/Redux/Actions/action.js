@@ -125,7 +125,7 @@ export const get_detail = (id) => {
 
             return dispatch({
                 type: GET_DETAIL,
-                payload:detail[0]  
+                payload:detail  
 
             })
 

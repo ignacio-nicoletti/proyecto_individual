@@ -97,48 +97,32 @@ const ApiDetail = async (id) => {
 };
 
 const DbDetail = async (id) => {
-	const gamesDbDetails = await Videogame.findAll({
-		where: { id: id },
-		include: {
-			model: Genre,
-			attributes: ["name"],
-			through: {
-				attributes: [],
-			},
-		},
-	});
+	const gamesDbDetails = await Videogame.findByPk(id)
+		
 	return gamesDbDetails;
 }
 
-const TotalDetail = async () => {
-	const apigameDetail = await ApiDetail();
-	const apiDBDetail = await DbDetail()
+// const TotalDetail = async (id) => {
+// 	const apigameDetail = await ApiDetail(id);
+// 	const apiDBDetail = await DbDetail(id)
+// 	const InfoDetail = await apiDBDetail.map((el) => {
+// 		return {
+// 			id: el.id,
+// 			name: el.name,
+// 			releaseDate: el.releaseDate,
+// 			rating: el.rating,
+// 			platforms: el.platforms,
+// 			imageUrl: el.imageUrl,
+// 			genres: toString(el.genres.map((genre) => genre.name)),
+// 			createdInDb: true,
+// 		};
+// 	});
+// 	const unionDetail = apigameDetail.concat(InfoDetail);
+// 	return (unionDetail);
+// }
 
 
-	const InfoDetail = await apiDBDetail.map((el) => {
-		return {
-			id: el.id,
-			name: el.name,
-			releaseDate: el.releaseDate,
-			rating: el.rating,
-			platforms: el.platforms,
-			imageUrl: el.imageUrl,
-			genres: toString(el.genres.map((genre) => genre.name)),
-			createdInDb: true,
-		};
-	});
-	const unionDetail = apigameDetail.concat(InfoDetail);
-	return (unionDetail);
-}
-
-
-const getMaxId = async () => {
-    const entities = await GameTotal();
-    return Math.max(...entities.map(x => x.id)); //me da el id mas alto 
-}
-
-
-module.exports = { GameTotal, TotalDetail, ApiDetail,DbDetail,LLamarJuegos,getMaxId  }
+module.exports = { GameTotal, ApiDetail,DbDetail,LLamarJuegos }
 
 //
 //

@@ -19,7 +19,7 @@ const BotonBDApi = () => {
         <div className={style.contain}>
 
             <div>
-                <select className={style.selectors} onChange={(e) => { handleChange(e) }}>
+                <select className={style.select} onChange={(e) => { handleChange(e) }}>
                     <option selected disabled>Juegos</option>
 
                     {Juegos.map((op, i) => {
