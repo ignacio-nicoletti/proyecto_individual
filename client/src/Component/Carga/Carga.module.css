@@ -1,93 +1,14 @@
  .body {
-	height: 50vh;
+	height: 30vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background: black;
-	width: 100vh;
+	background: rgb(94, 20, 20);
+	/* background: transparent; */
+	width: 70vh;
+	margin-left:30% ;
 }
-/*
-.pagination {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	--ddim: 10px;
-	--rd: 15px;
-	--rdim: calc(var(--rd)*2);
-	--pm: #ffff03;
-}
-
-.label {
-	content: '';
-	margin: 0 10px;
-	height: var(--ddim);
-	width: var(--ddim);
-	background: #f7b997;
-	cursor: pointer;
-}
-
-.label:first-child {margin-left: 0;}
-.label:last-child {margin-right: 0;}
-.input {display: none;}
-
-.pacman {
-	content: '';
-	position: absolute;
-	top: calc(-1*var(--ddim));
-	left: calc(-1*var(--ddim)/2);
-	height: var(--rdim);
-	width: var(--rdim);
-	transition: transform 250ms linear;
-}
-
-.pacman:before,
-.pacman:after {
-	content: '';
-	position: absolute;
-	height: var(--rd);
-	width: var(--rdim);
-	left: 0;
-	background: var(--pm);
-	transition: inherit;
-}
-
-.pacman:before {
-	top: 0;
-	border-top-left-radius: var(--rdim);
-	border-top-right-radius: var(--rdim);
-	transform-origin: bottom center;
-	transform: rotate(-45deg);
-}
-
-.pacman:after {
-	bottom: 0;
-	border-bottom-left-radius: var(--rdim);
-	border-bottom-right-radius: var(--rdim);
-	transform-origin: top center;
-	transform: rotate(45deg);
-}
-
-@keyframes waka {
-	0% {}
-	50% {transform: rotate(0);}
-	100% {}
-}
-
-.input[type="radio"]:hover ~ .pacman:before,
-.input[type="radio"]:hover ~ .pacman:after {
-	animation: waka 500ms infinite;
-}
-
-.input[id="dot-1"]:checked ~ .pacman {transform: translateX(var(--ddim));}
-.input[id="dot-2"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)));}
-.input[id="dot-3"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*2));}
-.input[id="dot-4"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*3));}
-.input[id="dot-5"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*4));}
-.input[id="dot-6"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*5));}
-.input[id="dot-7"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*6));}
-.input[id="dot-8"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*7));} */
-
 
 .contain {
 	display: flex;
@@ -95,6 +16,7 @@
 	overflow: hidden;
 	height: 50vh;
 	width: 50vh;
+	
 }
 
 
@@ -147,17 +69,18 @@
 	border: 35px solid #ffcc00;
 	border-right-color: transparent;
 	border-top-color: transparent;
+	
 }
 
 @keyframes chunk-top {
 
 	0%,
 	100% {
-		transform: rotate(-0deg);
+		transform: rotate(0deg);
 	}
 
 	50% {
-		transform: rotate(-60deg);
+		transform: rotate(-10deg);
 	}
 }
 
@@ -166,6 +89,7 @@
 	border: 35px solid #ffcc00;
 	/* border-left-color: transparent; */
 	border-bottom-color: transparent;
+
 }
 
 @keyframes chunk-bottom {

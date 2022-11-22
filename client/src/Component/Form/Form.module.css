@@ -16,6 +16,8 @@
     width: 98%;  
     font-size: 25px;
     font-family: inherit;
+    border-radius: 3px;
+  
 }
 
 .formulario {
@@ -51,4 +53,8 @@ label{
 
 h2{
     padding-left: 25%;
+}
+small{
+    display: flex;
+    align-self: center;
 }
