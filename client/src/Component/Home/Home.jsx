@@ -43,7 +43,7 @@ const Home = () => {
                 <BotonOrder setRender={setRender} render={render} />
                 <BotonBDApi />
                 <SearchBar />
-                <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
+                <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage}/>
                 <Videogames currentPost={currentPost} />
 
             </div>

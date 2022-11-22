@@ -135,7 +135,7 @@ const Form = () => {
         <div className={style.body}>
             <div className={style.contain}>
 
-                <h2>Crear Videojuego</h2>
+                <h2>Create your Videogame</h2>
 
                 <form onSubmit={handleSubmit} className={style.formulario}>
 

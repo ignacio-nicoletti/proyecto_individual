@@ -21,11 +21,35 @@ const About = () => {
             </div>
             <div className={style.button}>
                 <Link to="/">
-                    <button>Home</button>
+                    <button className={style.but}>Home</button>
                 </Link>
             </div>
 
+
+
+
+
+
+
+            <div className={style.body}>
+                <div className={style.containPacman}>
+                    <div className={style.pacman}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                    <div className={style.path}></div>
+                </div>
+            </div>
+
+
         </div>
+
+
+
+
     )
 }
 

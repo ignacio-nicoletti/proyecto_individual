@@ -7,6 +7,7 @@ const { Videogame, conn } = require('../../src/db.js');
 const agent = session(app);
 const videogame = {
   name: 'Super Mario Bros',
+  id: 1
 };
 
 describe('Videogame routes', () => {
