@@ -40,17 +40,6 @@ router.post("/", async (req, res) => {
 
    try {
 
-      
-
-      // let id = 1;
-      // const idApi = await GameTotal()
-      // const resultado = idApi.map(juego => juego.id)
-      // console.log(resultado);
-
-      // while (resultado.includes(id)) {
-      //    id++
-      // }
-
       const crearVideojuego = await Videogame.create({
          // id,
          name: name,

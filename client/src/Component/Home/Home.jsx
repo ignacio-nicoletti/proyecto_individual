@@ -12,8 +12,8 @@ import style from './Home.module.css';
 const Home = () => {
 
     //----paginado----//
-    const videoxpag = useSelector(state => state.videoxpag)
-    const videofilter = useSelector(state => state.videofiltrados)
+    const videoxpag = useSelector(state => state.videoxpag)//todos
+    const videofilter = useSelector(state => state.videofiltrados)//filtrados
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(15)
@@ -22,8 +22,8 @@ const Home = () => {
     const indexOfFirstPost = indexOfLastPost - postPerPage;//0
 
 
-    const currentPost = videofilter.length ?
-        videofilter.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPost = videofilter.length
+        ? videofilter.slice(indexOfFirstPost, indexOfLastPost)
         : videoxpag.slice(indexOfFirstPost, indexOfLastPost)//de 0-15
     //----paginado----//
 
@@ -43,7 +43,7 @@ const Home = () => {
                 <BotonOrder setRender={setRender} render={render} />
                 <BotonBDApi />
                 <SearchBar />
-                <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage}/>
+                <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
                 <Videogames currentPost={currentPost} />
 
             </div>

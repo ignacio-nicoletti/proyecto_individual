@@ -102,26 +102,6 @@ const DbDetail = async (id) => {
 	return gamesDbDetails;
 }
 
-// const TotalDetail = async (id) => {
-// 	const apigameDetail = await ApiDetail(id);
-// 	const apiDBDetail = await DbDetail(id)
-// 	const InfoDetail = await apiDBDetail.map((el) => {
-// 		return {
-// 			id: el.id,
-// 			name: el.name,
-// 			releaseDate: el.releaseDate,
-// 			rating: el.rating,
-// 			platforms: el.platforms,
-// 			imageUrl: el.imageUrl,
-// 			genres: toString(el.genres.map((genre) => genre.name)),
-// 			createdInDb: true,
-// 		};
-// 	});
-// 	const unionDetail = apigameDetail.concat(InfoDetail);
-// 	return (unionDetail);
-// }
-
-
 module.exports = { GameTotal, ApiDetail,DbDetail,LLamarJuegos }
 
 //

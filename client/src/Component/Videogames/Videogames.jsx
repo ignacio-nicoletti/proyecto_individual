@@ -16,7 +16,7 @@ const Videogames = ({ currentPost }) => {
    }, [dispatch])
   
   
-  
+ 
 
    return (
 
@@ -32,16 +32,12 @@ const Videogames = ({ currentPost }) => {
                      <h4 className={style.dim}>Rating: {rating}★</h4>
 
 
-                   
-
+                  
                      <Link to={`/home/${id}`}>
                         <button className={style.det}>Detail</button>
                      </Link>
 
                   
-
-
-
                   </div>
                ))
                :

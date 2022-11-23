@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_game, get_detail, get_videogames } from "../../Redux/Actions/action";
 import style from './DetailGame.module.css'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 const DetailGame = (props) => {
 
@@ -15,10 +15,14 @@ const DetailGame = (props) => {
 
 
     const detail = useSelector(state => state.detail)
-
-
+    const history = useHistory()
+    
+    
     const handleDelete = () => {
+
         dispatch(delete_game(id))
+        alert("videogame delete")
+        history.push("/home")
     }
 
 
@@ -49,7 +53,7 @@ const DetailGame = (props) => {
 
                     {
                         detail.createdInDb
-                            ? <button onClick={handleDelete}>delete</button> : ""
+                            ? <button type="button" onClick={handleDelete}>delete</button> : ""
 
                     }
                 </div>
