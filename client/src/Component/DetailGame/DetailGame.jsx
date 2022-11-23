@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { delete_game, get_detail, get_videogames } from "../../Redux/Actions/action";
+import { BorrarCacheDetail, delete_game, get_detail, get_videogames } from "../../Redux/Actions/action";
 import style from './DetailGame.module.css'
 import { Link, useHistory, useParams } from 'react-router-dom';
 
-const DetailGame = (props) => {
+const DetailGame = () => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -28,8 +28,8 @@ const DetailGame = (props) => {
 
 
     const handleClick = () => {
+        dispatch(BorrarCacheDetail())
         dispatch(get_videogames());
-
     }
 
 

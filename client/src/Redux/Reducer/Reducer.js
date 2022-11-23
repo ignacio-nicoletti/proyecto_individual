@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME, BD_API, DELETE } from "../Actions/action"
+import { GET_VIDEOGAMES, ERROR, FILTRARXNOMBRE, FILTRARXGENERO, ORDER, RATING, GET_DETAIL, FILTRADODEGENERO, POSTVIDEOGAME, BD_API, DELETE, BORRARCACHEDETAIL } from "../Actions/action"
 
 const initial_state = {
     videogames: [],
@@ -129,10 +129,17 @@ export default function reducer(state = initial_state, action) {
             const deleteVideogames = state.videofiltrados.filter((v) => v.id !== action.payload)
             return { ...state, videofiltrados: deleteVideogames }
 
-        case ERROR: return { 
-            ...state,error: action.payload }
+        case ERROR: return {
+            ...state, error: action.payload
+        }
 
+        case BORRARCACHEDETAIL:
+            return {
+                ...state, detail: action.payload
+            }
         default: return { ...state }
     }
+
+
 
 }

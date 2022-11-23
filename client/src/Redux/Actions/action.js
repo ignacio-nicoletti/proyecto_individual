@@ -12,6 +12,7 @@ export const POSTVIDEOGAME = "POSTVIDEOGAME";
 export const BD_API = "BD_API";
 export const DELETE = "DELETE";
 export const ERROR = "ERROR";
+export const BORRARCACHEDETAIL="BORRARCACHEDETAIL"
 
 
 export const get_videogames = () => {
@@ -189,3 +190,11 @@ export const delete_game = (id) => {
 
 
 } 
+
+export const BorrarCacheDetail=()=>{
+    return {
+        type: BORRARCACHEDETAIL,
+        payload:{}
+    }
+
+}
