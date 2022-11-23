@@ -143,31 +143,31 @@ const Form = () => {
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Name:</label>
-                        <input type="text" name='name' value={input.name} onChange={handleChange} required />
+                        <input type="text" name='name' value={input.name} onChange={handleChange} required className={style.input}/>
                         {error.name ? <small>{error.name}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Description:</label>
-                        <input type="text" name='description' value={input.description} onChange={handleChange} required />
+                        <input type="text" name='description' value={input.description} onChange={handleChange} required className={style.input}/>
                         {error.description ? <small>{error.description}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>ReleaseDate:</label>
-                        <input type="text" name='released' value={input.released} onChange={handleChange} required />
+                        <input type="text" name='released' value={input.released} onChange={handleChange} required className={style.input}/>
                         {error.released ? <small>{error.released}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Rating:</label>
-                        <input type="text" name='rating' value={input.rating} onChange={handleChange} required />
+                        <input type="text" name='rating' value={input.rating} onChange={handleChange} required className={style.input}/>
                         {error.rating ? <small>{error.rating}</small> : ''}
                     </div>
 
                     <div className={style.platform}>
                         <label htmlFor="" className={style.labels}>Platform:</label>
-                        <select onChange={optionchangeP}>
+                        <select onChange={optionchangeP} className={style.select}>
 
                             {platforms.map(platform => (
                                 <option value={platform}>{platform}</option>
@@ -175,8 +175,8 @@ const Form = () => {
                             ))}
                         </select>
 
-                        <input type="text" name='platform' value={option2} onChange={handleChange} required />
-                        <button type='button' onClick={ResetPlat}>X</button>
+                        <input type="text" name='platform' value={option2} onChange={handleChange} required className={style.input}/>
+                        <button type='button' onClick={ResetPlat} className={style.X}>X</button>
                         {error.platforms ? <small>{error.platforms}</small> : ''}
 
                     </div>
@@ -185,15 +185,15 @@ const Form = () => {
                         <label htmlFor="" className={style.labels}>Genres:</label>
 
 
-                        <select onChange={optionchange}>
+                        <select onChange={optionchange} className={style.select}>
 
                             {generos.map(genero => (
                                 <option value={genero.name}>{genero.name}</option>
 
                             ))}
                         </select>
-                        <input type="text" name='genres' value={option} onChange={handleChange} required />
-                        <button type='button' onClick={ResetGenre}>X</button>
+                        <input type="text" name='genres' value={option} onChange={handleChange} required className={style.input}/>
+                        <button type='button' onClick={ResetGenre} className={style.X}>X</button>
                         {error.genres ? <small>{error.genres}</small> : ''}
 
 
@@ -201,7 +201,7 @@ const Form = () => {
 
                     <div >
                         <label htmlFor="" className={style.labels}>ImageUrl:</label>
-                        <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} required />
+                        <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} required className={style.input}/>
                         {error.imageUrl ? <small>{error.imageUrl}</small> : ''}
                     </div>
 

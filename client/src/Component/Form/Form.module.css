@@ -12,23 +12,24 @@
 
 
 .input {
-    height: 35px;
-    width: 98%;  
-    font-size: 25px;
-    font-family: inherit;
-    border-radius: 3px;
-  
+   
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: brown;
+    border: 2px solid black;
 }
 
 .formulario {
     padding-left: 30%;
-    background-color: #474647;;
+    background-color: #474647;
 }
 
 .button { 
-    background: rgb(148, 243, 4);
+    background-color:brown;
     font-size: large;
-    color: black;
+    color: white;
     padding: 10px 40px;
     border-radius: 5px;
     font-weight: bold;
@@ -57,4 +58,23 @@ h2{
 small{
     display: flex;
     align-self: center;
+}
+
+.X{
+
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: brown;
+}
+
+.select {
+    height: 20px;
+    border: 2px solid black;
+    font-size: 15px;
+    /* color: white; */
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: brown;
 }
