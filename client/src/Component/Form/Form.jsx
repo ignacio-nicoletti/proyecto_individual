@@ -29,8 +29,10 @@ const Form = () => {
         if (!input.genres.length) error.genres = "Debe ingresar un genres"
         if (!input.imageUrl.length) error.imageUrl = "Debe ingresar un ImageUrl"
         if (!input.description.length) error.description = "Debe ingresar un description"
+        
+            return error
 
-        return error
+        
     }
 
     const dispatch = useDispatch()
@@ -141,25 +143,25 @@ const Form = () => {
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Name:</label>
-                        <input type="text" name='name' value={input.name} onChange={handleChange} />
+                        <input type="text" name='name' value={input.name} onChange={handleChange} required />
                         {error.name ? <small>{error.name}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Description:</label>
-                        <input type="text" name='description' value={input.description} onChange={handleChange} />
+                        <input type="text" name='description' value={input.description} onChange={handleChange} required />
                         {error.description ? <small>{error.description}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>ReleaseDate:</label>
-                        <input type="text" name='released' value={input.released} onChange={handleChange} />
+                        <input type="text" name='released' value={input.released} onChange={handleChange} required />
                         {error.released ? <small>{error.released}</small> : ''}
                     </div>
 
                     <div className={style.contain_div}>
                         <label htmlFor="" className={style.labels}>Rating:</label>
-                        <input type="text" name='rating' value={input.rating} onChange={handleChange} />
+                        <input type="text" name='rating' value={input.rating} onChange={handleChange} required />
                         {error.rating ? <small>{error.rating}</small> : ''}
                     </div>
 
@@ -173,7 +175,7 @@ const Form = () => {
                             ))}
                         </select>
 
-                        <input type="text" name='platform' value={option2} onChange={handleChange} />
+                        <input type="text" name='platform' value={option2} onChange={handleChange} required />
                         <button type='button' onClick={ResetPlat}>X</button>
                         {error.platforms ? <small>{error.platforms}</small> : ''}
 
@@ -190,7 +192,7 @@ const Form = () => {
 
                             ))}
                         </select>
-                        <input type="text" name='genres' value={option} onChange={handleChange} />
+                        <input type="text" name='genres' value={option} onChange={handleChange} required />
                         <button type='button' onClick={ResetGenre}>X</button>
                         {error.genres ? <small>{error.genres}</small> : ''}
 
@@ -199,11 +201,11 @@ const Form = () => {
 
                     <div >
                         <label htmlFor="" className={style.labels}>ImageUrl:</label>
-                        <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} />
+                        <input type="text" name='imageUrl' value={input.imageUrl} onChange={handleChange} required />
                         {error.imageUrl ? <small>{error.imageUrl}</small> : ''}
                     </div>
 
-                    <button type="submit" className={style.button} >create</button>
+                    <button type="submit" className={style.button}  >create</button>
                 </form>
 
             </div>
