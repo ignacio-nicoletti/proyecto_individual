@@ -129,9 +129,8 @@ export default function reducer(state = initial_state, action) {
             const deleteVideogames = state.videofiltrados.filter((v) => v.id !== action.payload)
             return { ...state, videofiltrados: deleteVideogames }
 
-
-
-        case ERROR: return { ...state, error: action.payload }
+        case ERROR: return { 
+            ...state,error: action.payload }
 
         default: return { ...state }
     }

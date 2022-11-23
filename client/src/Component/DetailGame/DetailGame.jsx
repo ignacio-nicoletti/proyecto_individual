@@ -16,13 +16,14 @@ const DetailGame = (props) => {
 
     const detail = useSelector(state => state.detail)
     const history = useHistory()
-    
-    
+
+
     const handleDelete = () => {
 
         dispatch(delete_game(id))
         alert("videogame delete")
         history.push("/home")
+        window.location.reload()
     }
 
 
@@ -52,7 +53,7 @@ const DetailGame = (props) => {
                     </Link>}
 
                     {
-                        detail.createdInDb
+                        id.length > 6
                             ? <button type="button" onClick={handleDelete}>delete</button> : ""
 
                     }

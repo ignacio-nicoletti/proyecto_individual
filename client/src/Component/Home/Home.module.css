@@ -3,3 +3,13 @@ background-image: url("../../assets/fondo_home.png");
 background-size:cover;
 } */
 
+.btn {
+    height: 35px;
+    width: 15%;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    background-color: brown;
+    margin-left: 5%;
+    border-radius: 10px;
+}

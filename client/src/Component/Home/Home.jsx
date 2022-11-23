@@ -35,6 +35,15 @@ const Home = () => {
     const [rating, setRating] = useState(false)
     //---rating---/
 
+    const [refresh, setRefresh] = useState(false)
+
+const handleRender=(e)=>{
+
+    setRefresh(!refresh)
+
+}
+
+
     return (
         <>
             <div className={style.contain}>
@@ -43,6 +52,7 @@ const Home = () => {
                 <BotonOrder setRender={setRender} render={render} />
                 <BotonBDApi />
                 <SearchBar />
+                <button type='button' onClick={()=>window.location.reload() }className={style.btn} >Refresh</button>
                 <Paginado setCurrentPage={setCurrentPage} videoxpag={videoxpag.length} postPerPage={postPerPage} />
                 <Videogames currentPost={currentPost} />
 
